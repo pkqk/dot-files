@@ -48,9 +48,9 @@ __git_ps1 ()
 		fi
 	fi
 }
-yellow="\[\033[00;33m\]"
-green="\[\033[00;32m\]"
-red="\[\033[00;31m\]"
-fgcolor="\[\033[00m\]"
+yellow="\[\e[0;33m\]"
+green="\[\e[0;32m\]"
+red="\[\e[0;31m\]"
+fgcolor="\[\e[0m\]"
 export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1)${fgcolor}\$ "
 unset yellow green red fgcolor
