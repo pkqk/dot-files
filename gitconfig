@@ -1,6 +1,15 @@
 [user]
 	name = adam
 	email = adam@pkqk.net
+[alias]
+  st = status
+  ci = commit
+  cia = commit -a
+  co = checkout
+  cob = checkout -b
+  d = diff
+  p = push
+  pl = pull
 [color]
   branch = auto
   diff = auto
