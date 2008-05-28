@@ -1,3 +1,6 @@
+BASH_COMPLETION=~/.dotfiles/bash_standard_completion
+#source ~/.dotfiles/bash_standard_completion
+source $BASH_COMPLETION
 _mategem()
 {
   local curw
@@ -8,4 +11,4 @@ _mategem()
   return 0;
 }
 complete -F _mategem -o dirnames mategem
-source ~/.git_completion
+source ~/.dotfiles/git_completion
