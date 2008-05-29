@@ -8,7 +8,7 @@
   co = checkout
   cob = checkout -b
   d = diff
-  p = push
+  pu = push
   pl = pull
 [color]
   branch = auto
