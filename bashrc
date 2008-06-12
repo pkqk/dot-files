@@ -36,18 +36,6 @@ alias gs="git stash"
 
 source ~/.bash_completion
 
-# command prompt
-__git_ps1 ()
-{
-	local b="$(git symbolic-ref HEAD 2>/dev/null)"
-	if [ -n "$b" ]; then
-		if [ -n "$1" ]; then
-			printf "$1" "${b##refs/heads/}"
-		else
-			printf "(%s)" "${b##refs/heads/}"
-		fi
-	fi
-}
 yellow="\[\e[0;33m\]"
 green="\[\e[0;32m\]"
 red="\[\e[0;31m\]"
