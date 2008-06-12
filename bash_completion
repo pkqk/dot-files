@@ -1,5 +1,4 @@
-BASH_COMPLETION=~/.dotfiles/bash_standard_completion
-#source ~/.dotfiles/bash_standard_completion
+BASH_COMPLETION=~/.dot-files.git/bash_standard_completion
 source $BASH_COMPLETION
 _mategem()
 {
@@ -11,4 +10,4 @@ _mategem()
   return 0;
 }
 complete -F _mategem -o dirnames mategem
-source ~/.dotfiles/git_completion
+source ~/.dot-files.git/git_completion
