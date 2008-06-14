@@ -583,6 +583,9 @@ _git_fetch ()
 	git,2)
 		__gitcomp "$(__git_remotes)"
 		;;
+	g,2)
+		__gitcomp "$(__git_remotes)"
+		;;
 	*)
 		case "$cur" in
 		*:*)
@@ -724,6 +727,9 @@ _git_pull ()
 	git,2)
 		__gitcomp "$(__git_remotes)"
 		;;
+	g,2)
+  	__gitcomp "$(__git_remotes)"
+  	;;
 	*)
 		local remote
 		case "${COMP_WORDS[0]}" in
@@ -744,6 +750,9 @@ _git_push ()
 		__gitcomp "$(__git_remotes)"
 		;;
 	git,2)
+		__gitcomp "$(__git_remotes)"
+		;;
+	g,2)
 		__gitcomp "$(__git_remotes)"
 		;;
 	*)
@@ -1224,8 +1233,8 @@ complete -o default -o nospace -F _git_ls_tree git-ls-tree
 complete -o default -o nospace -F _git_merge git-merge gm
 complete -o default -o nospace -F _git_merge_base git-merge-base
 complete -o default -o nospace -F _git_name_rev git-name-rev
-complete -o default -o nospace -F _git_pull git-pull pl
-complete -o default -o nospace -F _git_push git-push pu
+complete -o default -o nospace -F _git_pull git-pull
+complete -o default -o nospace -F _git_push git-push
 complete -o default -o nospace -F _git_rebase git-rebase
 complete -o default -o nospace -F _git_config git-config
 complete -o default -o nospace -F _git_remote git-remote
