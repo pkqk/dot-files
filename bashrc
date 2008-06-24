@@ -2,6 +2,9 @@ alias ls="ls -GF"
 alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
 alias isvn="egrep -v '\.svn'"
 
+alias pd="pushd"
+alias dp="popd"
+
 if [ -x "`which mate_wait`" ]
 then
   export EDITOR=mate_wait
@@ -40,5 +43,5 @@ yellow="\[\e[0;33m\]"
 green="\[\e[0;32m\]"
 red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
-export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1)${fgcolor}\$ "
+export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1)${fgcolor}\\$ "
 unset yellow green red fgcolor
