@@ -28,3 +28,5 @@
   added = yellow
   changed = green
   untracked = cyan
+[web]
+  browser = open
