@@ -30,3 +30,5 @@
   untracked = cyan
 [web]
   browser = open
+[branch]
+	autosetupmerge = true
