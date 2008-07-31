@@ -1,5 +1,6 @@
 BASH_COMPLETION=~/.dot-files.git/bash_standard_completion
 source $BASH_COMPLETION
+# mategem completion
 _mategem()
 {
   local curw
@@ -10,4 +11,8 @@ _mategem()
   return 0;
 }
 complete -F _mategem -o dirnames mategem
+# rake completion
+BASH_COMPLETION_RB=~/.dot-files.git/bash_completion.rb
+complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_rake_tasks'" -o default rake
+# git completion
 source ~/.dot-files.git/git_completion
