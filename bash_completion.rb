@@ -7,37 +7,34 @@
 # Adapted from 
 # http://onrails.org/articles/2006/08/30/namespaces-and-rake-command-completion
 
-def rakefile
-  File.join(Dir.pwd, 'Rakefile')
-end
-def capfile
-  File.join(Dir.pwd, 'Capfile')
+$tasks_cmd = {
+  :rake  => 'rake -sT',
+  :cap => 'cap -Tv'
+}
+$task_files = {
+  :rake => 'Rakefile',
+  :cap => 'Capfile'
+}
+
+def task_file(cmd)
+  File.join(Dir.pwd, $task_files[cmd])
 end
 
-def rake_tasks
-  if File.exists?(dotcache = File.join(File.expand_path('~'), ".raketabs-#{Dir.pwd.hash}"))
-    return File.read(dotcache) if File.mtime(rakefile) < File.mtime(dotcache)
+def tasks(cmd)
+  if File.exists?(dotcache = File.join(File.expand_path('~'), ".#{cmd}tabs-#{Dir.pwd.hash}"))
+    return File.read(dotcache) if File.mtime(task_file(cmd)) < File.mtime(dotcache)
   end
-  tasks = `rake --silent --tasks | grep ^rake | cut -d' ' -f2`
-  File.open(dotcache, 'w') { |f| f.puts tasks }
-  tasks
-end
-
-def cap_tasks
-  if File.exists?(dotcache = File.join(File.expand_path('~'), ".captabs-#{Dir.pwd.hash}"))
-    return File.read(dotcache)
-  end
-  tasks = `cap -Tv | grep ^cap | cut -d' ' -f2`
+  tasks = `#{$tasks_cmd[cmd]} | grep ^#{cmd} | cut -d' ' -f2`
   File.open(dotcache, 'w') { |f| f.puts tasks }
   tasks.split("\n")
 end
 
 def complete_tasks(cmd)
   return [] unless /\b#{cmd}\b/ =~ ENV["COMP_LINE"]
-  return [] unless File.file?(send("#{cmd}file"))
+  return [] unless File.file?(task_file(cmd))
   after_match = $'
   task_match = (after_match.empty? || after_match =~ /\s$/) ? nil : after_match.split.last
-  tasks = send("#{cmd}_tasks")
+  tasks = tasks(cmd)
   tasks = tasks.select { |t| /^#{Regexp.escape task_match}/ =~ t } if task_match
   # handle namespaces
   if task_match =~ /^([-\w:]+:)/
