@@ -14,5 +14,6 @@ complete -F _mategem -o dirnames mategem
 # rake completion
 BASH_COMPLETION_RB=~/.dot-files.git/bash_completion.rb
 complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_rake_tasks'" -o default rake
+complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_cap_tasks'" -o default cap
 # git completion
 source ~/.dot-files.git/git_completion
