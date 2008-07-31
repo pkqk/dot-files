@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 
-# If you update your tasks, just $ rm ~/.raketabs*
+# If you update your tasks, just $ rm ~/.(rake|cap)tabs*
+# complete -C "ruby -r${path/to/this/file} -e 'puts complete_tasks(:rake)'" -o default rake
+# complete -C "ruby -r${path/to/this/file} -e 'puts complete_tasks(:cap)'" -o default cap
 #
 # Adapted from 
 # http://errtheblog.com/posts/31-rake-around-the-rosie
