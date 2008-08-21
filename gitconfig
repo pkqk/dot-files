@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.dot-files/gitignore
+  excludesfile = ~/.dot-files.git/gitignore
 [user]
 	name = adam
 	email = adam@pkqk.net
