@@ -1,4 +1,4 @@
-export PATH=~/bin:$PATH:/opt/local/bin:/usr/local/mysql/bin
+export PATH=~/bin:$PATH:/opt/local/bin:/usr/local/mysql/bin:/Applications/Shoes.app/Contents/MacOS
 
 #export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}\007"'
 #export DISPLAY=":0.0" # For X11 remoting
