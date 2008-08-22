@@ -34,3 +34,5 @@
   browser = open
 [branch]
 	autosetupmerge = true
+[status]
+  submodulesummary = true
