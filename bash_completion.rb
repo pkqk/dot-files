@@ -34,8 +34,8 @@ end
 def complete_tasks(cmd)
   return [] unless /\b#{cmd}\b/ =~ ENV["COMP_LINE"]
   return [] unless File.file?(task_file(cmd))
-  after_match = $'
-  task_match = (after_match.empty? || after_match =~ /\s$/) ? nil : after_match.split.last
+  frag = ENV["COMP_LINE"][0...ENV['COMP_POINT'].to_i]
+  task_match = (frag.empty? || frag =~ /\s$/) ? nil : frag.split.last
   tasks = tasks(cmd)
   tasks = tasks.select { |t| /^#{Regexp.escape task_match}/ =~ t } if task_match
   # handle namespaces
