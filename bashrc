@@ -43,7 +43,7 @@ yellow="\[\e[0;33m\]"
 green="\[\e[0;32m\]"
 red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
-export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1)${fgcolor}\\$ "
+export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
 unset yellow green red fgcolor
 
 alias smpc="ssh -t stealthnux ncmpc"
