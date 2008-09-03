@@ -22,7 +22,7 @@ shopt -s extglob
 source ~/.bash_functions
 #source ~/.bash_completion
 
-alias op="open *.tmproj"
+alias op="open *.tmproj || mate ."
 
 # Git aliases
 alias g="git"
