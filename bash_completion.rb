@@ -23,7 +23,7 @@ def task_file(cmd)
 end
 
 def tasks(cmd)
-  if File.exists?(dotcache = File.join(File.expand_path('~'), ".#{cmd}tabs-#{Dir.pwd.hash}"))
+  if File.exists?(dotcache = ".#{cmd}tab-#{Dir.pwd.hash}")
     return File.read(dotcache) if File.mtime(task_file(cmd)) < File.mtime(dotcache)
   end
   tasks = `#{$tasks_cmd[cmd]} | grep ^#{cmd} | cut -d' ' -f2`
