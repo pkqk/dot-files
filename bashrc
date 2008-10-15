@@ -18,11 +18,15 @@ export LESSEDIT='mate -l %lm %f'
 
 shopt -s extglob
 
+export CDPATH=~/Trike
+
 #source /etc/bash_completion
 source ~/.bash_functions
 #source ~/.bash_completion
 
 alias op="open *.tmproj || mate ."
+alias sc="script/console"
+alias as="autospec"
 
 # Git aliases
 alias g="git"
