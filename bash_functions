@@ -23,3 +23,7 @@ function serve {
   fi
   ruby -rwebrick -e "w = WEBrick::HTTPServer.new(:Port => ${port}, :DocumentRoot => '.'); %w(TERM INT).each {|s| trap(s) {w.shutdown}};w.start"
 }
+
+function grepmate {
+  grep -rin shifter $* | awk -F':' '{printf("mate -w -n -l %s %s\n",$2,$1)}' | bash -
+}
