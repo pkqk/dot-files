@@ -1,3 +1,4 @@
+source ~/.dot-files.git/bash_paths
 alias ls="ls -GF"
 alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
 alias isvn="egrep -v '\.svn'"
@@ -17,8 +18,9 @@ fi
 export LESSEDIT='mate -l %lm %f'
 
 shopt -s extglob
+shopt -s histappend
 
-export CDPATH=~/Trike
+export CDPATH=.:~/Trike
 
 #source /etc/bash_completion
 source ~/.bash_functions
@@ -26,7 +28,7 @@ source ~/.bash_functions
 
 alias op="open *.tmproj || mate ."
 alias sc="script/console"
-alias as="autospec"
+alias aspec="autospec"
 
 # Git aliases
 alias g="git"
@@ -37,9 +39,6 @@ alias gco="git checkout"
 alias gm="git merge"
 alias ga="git add"
 alias gd="git diff"
-alias gsr="git svn rebase"
-alias gspush="git svn dcommit"
-alias gs="git stash"
 
 source ~/.bash_completion
 
