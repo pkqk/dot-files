@@ -1,8 +1,8 @@
 [core]
-  excludesfile = /Users/adam/.dot-files.git/gitignore
+  excludesfile = /Users/adamjohnson/.dot-files.git/gitignore
 [user]
-	name = adam
-	email = adam@pkqk.net
+	name = Adam Johnson
+	email = adamjohnson@reevoo.com
 [alias]
   st = status
   ci = commit

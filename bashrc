@@ -7,6 +7,7 @@ alias pd="pushd"
 alias dp="popd"
 
 alias m="mate"
+alias cdr="cd ~/Reevoo"
 
 if [ -x "`which mate_wait`" ]
 then
