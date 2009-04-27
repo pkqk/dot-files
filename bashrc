@@ -6,6 +6,8 @@ alias isvn="egrep -v '\.svn'"
 alias pd="pushd"
 alias dp="popd"
 
+alias m="mate"
+
 if [ -x "`which mate_wait`" ]
 then
   export EDITOR=mate_wait
@@ -19,8 +21,6 @@ export LESSEDIT='mate -l %lm %f'
 
 shopt -s extglob
 shopt -s histappend
-
-export CDPATH=.:~/Trike
 
 #source /etc/bash_completion
 source ~/.bash_functions
@@ -48,5 +48,3 @@ red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
 export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
 unset yellow green red fgcolor
-
-alias smpc="ssh -t stealthnux ncmpc"
