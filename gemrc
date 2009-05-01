@@ -6,6 +6,6 @@ gem: --no-ri
 - http://gems.rubyforge.org/
 - http://gems.github.com
 :backtrace: false
-rdoc: --fmt ajax
+rdoc: --fmt shtml
 :bulk_threshold: 1000
 :benchmark: false
