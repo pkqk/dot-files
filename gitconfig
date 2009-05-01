@@ -2,7 +2,7 @@
   excludesfile = /Users/adamjohnson/.dot-files.git/gitignore
 [user]
 	name = Adam Johnson
-	email = adamjohnson@reevoo.com
+	email = adam@pkqk.net
 [alias]
   st = status
   ci = commit
@@ -36,3 +36,5 @@
 	autosetupmerge = true
 [status]
   submodulesummary = true
+[svn]
+	authorsfile = /Users/adamjohnson/git.svn.authorsfile
