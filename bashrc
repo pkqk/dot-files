@@ -6,7 +6,6 @@ alias isvn="egrep -v '\.svn'"
 alias pd="pushd"
 alias dp="popd"
 
-alias m="mate"
 alias cdr="cd ~/Reevoo"
 
 if [ -x "`which mate_wait`" ]
@@ -27,19 +26,23 @@ shopt -s histappend
 source ~/.bash_functions
 #source ~/.bash_completion
 
-alias op="open *.tmproj || mate ."
+alias m="[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate ."
 alias sc="script/console"
 alias aspec="autospec"
 
 # Git aliases
 alias g="git"
-alias gst="git status"
-alias gci="git commit"
+alias gs="git status"
+alias gci="git commit -v"
 alias gb="git branch"
 alias gco="git checkout"
 alias gm="git merge"
 alias ga="git add"
 alias gd="git diff"
+alias gp="git push"
+alias gf="git fetch"
+alias gfm="git pull"
+alias gx="gitx"
 
 source ~/.bash_completion
 
