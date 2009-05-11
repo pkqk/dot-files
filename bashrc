@@ -6,7 +6,14 @@ alias isvn="egrep -v '\.svn'"
 alias pd="pushd"
 alias dp="popd"
 
-alias cdr="cd ~/Reevoo"
+export R=~/Reevoo
+export RV=$R/reevoo
+export RW=$R/revieworld
+export RM=$R/reevoomark
+alias cdr="cd $R"
+alias cdrv="cd $RV"
+alias cdrw="cd $RW"
+alias cdrm="cd $RM"
 
 if [ -x "`which mate_wait`" ]
 then
