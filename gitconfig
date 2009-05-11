@@ -38,3 +38,7 @@
   submodulesummary = true
 [svn]
 	authorsfile = /Users/adamjohnson/git.svn.authorsfile
+[url "git@code:"]
+  insteadOf = reevoo:
+[url "git@github.com:adamj/"]
+  insteadOf = github:
