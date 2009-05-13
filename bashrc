@@ -24,7 +24,7 @@ shopt -s histappend
 source ~/.bash_functions
 #source ~/.bash_completion
 
-alias m="[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate ."
+alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate .'
 alias sc="script/console"
 alias aspec="autospec"
 
