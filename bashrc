@@ -6,6 +6,8 @@ alias isvn="egrep -v '\.svn'"
 alias pd="pushd"
 alias dp="popd"
 
+alias p3="python3.0"
+
 if [ -x "`which mate_wait`" ]
 then
   export EDITOR=mate_wait
@@ -22,11 +24,13 @@ shopt -s histappend
 
 #source /etc/bash_completion
 source ~/.bash_functions
-#source ~/.bash_completion
+
+alias ql="2> /dev/null qlmanage -p"
 
 alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate .'
 alias sc="script/console"
 alias aspec="autospec"
+alias r="rake"
 
 # Git aliases
 alias g="git"
