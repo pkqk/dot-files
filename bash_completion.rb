@@ -11,7 +11,7 @@
 
 $tasks_cmd = {
   :rake  => 'rake -sT',
-  :cap => 'cap -Tv'
+  :cap => 'cap -vT'
 }
 $task_files = {
   :rake => 'Rakefile',
