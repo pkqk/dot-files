@@ -12,6 +12,7 @@
   d = diff
   pu = push
   pl = pull
+  unmerge = reset --hard ORIG_HEAD
 [color]
   branch = auto
   diff = auto
@@ -37,7 +38,7 @@
 [status]
   submodulesummary = true
 [svn]
-	authorsfile = /Users/adamjohnson/git.svn.authorsfile
+	authorsfile = /Users/adamjohnson/Reevoo/git.svn.authorsfile
 [url "git@code:"]
   insteadOf = reevoo:
 [url "git@github.com:adamj/"]
