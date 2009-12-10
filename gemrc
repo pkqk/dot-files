@@ -1,12 +1,13 @@
 --- 
-:benchmark: false
+:verbose: true
+:update_sources: true
 :sources: 
 - http://gems.rubyforge.org/
 - http://gems.github.com
 - http://code
+- http://gemcutter.org
 gem: --no-ri
-:update_sources: true
 :bulk_threshold: 1000
 :backtrace: false
 rdoc: --fmt shtml
-:verbose: true
+:benchmark: false
