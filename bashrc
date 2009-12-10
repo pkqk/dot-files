@@ -1,7 +1,6 @@
 source ~/.dot-files.git/bash_paths
 alias ls="ls -GF"
 alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
-alias isvn="egrep -v '\.svn'"
 
 alias pd="pushd"
 alias dp="popd"
@@ -10,10 +9,12 @@ export R=~/Reevoo
 export RV=$R/reevoo
 export RW=$R/revieworld
 export RM=$R/reevoomark
+export RM3=$R/reevoomark3
 alias cdr="cd $R"
 alias cdrv="cd $RV"
 alias cdrw="cd $RW"
 alias cdrm="cd $RM"
+alias cdm3="cd $RM3"
 
 if [ -x "`which mate_wait`" ]
 then
@@ -35,7 +36,14 @@ source ~/.bash_functions
 
 alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate .'
 alias sc="script/console"
-alias aspec="autospec"
+alias sd="script/dbconsole"
+alias sr="script/runner"
+alias sd4="script/dbconsole reporting4 -p"
+alias sc4="script/console reporting4"
+alias tt="touch tmp/restart.txt"
+function log {
+  tail -f log/${1-development.log}*
+}
 
 # Git aliases
 alias g="git"
@@ -43,13 +51,16 @@ alias gs="git status"
 alias gci="git commit -v"
 alias gb="git branch"
 alias gco="git checkout"
-alias gm="git merge"
+alias gcom="git checkout master"
+alias gcop="git checkout production"
+alias gm="git merge --no-ff"
 alias ga="git add"
 alias gd="git diff"
 alias gp="git push"
 alias gf="git fetch"
 alias gfm="git pull"
-alias gx="gitx"
+alias gfr="git pull --rebase"
+alias gx="gitx --all"
 
 source ~/.bash_completion
 
