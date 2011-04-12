@@ -1,9 +1,10 @@
 [core]
-  excludesfile = /Users/adamjohnson/.dot-files.git/gitignore
+  excludesfile = /Volumes/HD/Users/adamjohnson/.dot-files.git/gitignore
 [user]
 	name = Adam Johnson
 	email = adam@pkqk.net
 [alias]
+  g = grep -n
   st = status
   ci = commit
   cia = commit -a
@@ -13,6 +14,7 @@
   pu = push
   pl = pull
   unmerge = reset --hard ORIG_HEAD
+  cloner = clone -o reevoo
 [color]
   branch = auto
   diff = auto
@@ -37,9 +39,9 @@
 	autosetupmerge = true
 [status]
   submodulesummary = true
-[svn]
-	authorsfile = /Users/adamjohnson/Reevoo/git.svn.authorsfile
 [url "git@code:"]
   insteadOf = reevoo:
-[url "git@github.com:adamj/"]
+[url "git@github.com:pkqk/"]
   insteadOf = github:
+[push]
+	default = tracking

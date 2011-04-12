@@ -33,3 +33,13 @@ if has("gui_running")
 
   set guioptions=T
 endif
+
+if has("autocmd")
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+
+set background=dark
+colorscheme solarized

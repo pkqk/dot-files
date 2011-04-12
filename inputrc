@@ -2,3 +2,7 @@
 #"\e[B": history-search-forward
 set completion-ignore-case on
 set blink-matching-paren on
+set meta-flag on
+set input-meta on
+set output-meta on
+set convert-meta on

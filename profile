@@ -1,4 +1,4 @@
-source ~/.dot-files.git/bash_paths
+#source ~/.dot-files.git/bash_paths
 #export PATH=~/bin:$PATH:/opt/local/bin:/usr/local/mysql/bin:/Applications/Shoes.app/Contents/MacOS
 
 #export PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}\007"'
@@ -10,5 +10,6 @@ export MANPATH=$MANPATH:/opt/local/man:/usr/local/man
 
 if [ -f ~/.bashrc ]
 then
-  source ~/.bashrc
+  #source ~/.bashrc
+  echo
 fi
