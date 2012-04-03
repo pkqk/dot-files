@@ -9,7 +9,7 @@ export MANPATH=$MANPATH:/opt/local/man:/usr/local/man
 #export LSCOLORS=gxfxcxdxbxegedabagacad
 export LC_CTYPE=en_AU.UTF-8
 
-if [ -f ~/.bashrc ]
+if [ -e ~/.bashrc ]
 then
   source ~/.bashrc
 fi
