@@ -1,8 +1,8 @@
 [core]
-  excludesfile = /Users/adam/.dot-files.git/gitignore
+  excludesfile = /Users/adamjohnson/.dot-files.git/gitignore
 [user]
-	name = adam
-	email = adam@pkqk.net
+  name = Adam Johnson
+  email = adam@pkqk.net
 [alias]
   st = status
   ci = commit
@@ -10,8 +10,7 @@
   co = checkout
   cob = checkout -b
   d = diff
-  pu = push
-  pl = pull
+  g = grep -in
 [color]
   branch = auto
   diff = auto
@@ -33,8 +32,11 @@
 [web]
   browser = open
 [branch]
-	autosetupmerge = true
+  autosetupmerge = true
 [status]
   submodulesummary = true
 [url "git@github.com:adamj/"]
   insteadOf = github:
+[git-up "bundler"]
+	check = true
+	autoinstall = false

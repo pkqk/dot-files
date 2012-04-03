@@ -1,19 +1,20 @@
-source ~/.dot-files.git/bash_paths
-alias ls="ls -GF"
-alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
-alias isvn="egrep -v '\.svn'"
+DOT_ROOT="$HOME/$(dirname $(readlink ~/.bashrc))"
+source $DOT_ROOT/bash_paths
+source $DOT_ROOT/bash_functions
+source $DOT_ROOT/bash_completion
 
-alias pd="pushd"
-alias dp="popd"
+export GREP_OPTIONS="--color=auto"
+export HISTCONTROL="ignoreboth"
+export MANPATH=$MANPATH:/opt/local/man:/usr/local/man
+export LC_CTYPE=en_GB.UTF-8
+
+alias ls="ls -GF"
 
 alias p3="python3.0"
 
-if [ -x "`which mate_wait`" ]
+if [ -x "`which subl`" ]
 then
-  export EDITOR=mate_wait
-elif [ -x "`which mate`" ]
-then
-  export EDITOR="mate -w"
+  export EDITOR="subl -n -w"
 else
   export EDITOR=vim
 fi
@@ -22,8 +23,6 @@ export LESSEDIT='mate -l %lm %f'
 shopt -s extglob
 shopt -s histappend
 
-#source /etc/bash_completion
-source ~/.bash_functions
 
 alias ql="2> /dev/null qlmanage -p"
 
@@ -31,10 +30,11 @@ alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || m
 alias sc="script/console"
 alias aspec="autospec"
 alias r="rake"
+alias tt="touch tmp/restart.txt"
 
 # Git aliases
 alias g="git"
-alias gs="git status"
+alias gs="git status -s"
 alias gci="git commit -v"
 alias gb="git branch"
 alias gco="git checkout"
@@ -44,13 +44,20 @@ alias gd="git diff"
 alias gp="git push"
 alias gf="git fetch"
 alias gfm="git pull"
+alias gfr="git pull --rebase"
 alias gx="gitx"
+alias gg="git g"
 
-source ~/.bash_completion
 
 yellow="\[\e[0;33m\]"
 green="\[\e[0;32m\]"
 red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
-export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
-unset yellow green red fgcolor
+cyan="\[\e[0;36m\]"
+export PS1="${cyan}\W${yellow}\$(__git_ps1 '%%%s')${fgcolor}\\$ "
+unset cyan yellow green red fgcolor
+
+[ -f $DOT_ROOT/bash_local ] && source $DOT_ROOT/bash_local
+
+# rbenv stuff
+eval "$(rbenv init -)"
