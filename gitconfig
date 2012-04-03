@@ -1,7 +1,7 @@
 [core]
   excludesfile = /Users/adam/.dot-files.git/gitignore
 [user]
-	name = adam
+	name = Adam Johnson
 	email = adam@pkqk.net
 [alias]
   st = status
