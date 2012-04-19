@@ -1,7 +1,5 @@
 source ~/.dot-files.git/bash_paths
 alias ls="ls -GF"
-alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
-alias isvn="egrep -v '\.svn'"
 
 alias pd="pushd"
 alias dp="popd"
@@ -50,7 +48,11 @@ source ~/.bash_completion
 
 yellow="\[\e[0;33m\]"
 green="\[\e[0;32m\]"
+blue="\[\e[0;36m\]"
 red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
-export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
-unset yellow green red fgcolor
+export PS1="${blue}\W${yellow}\$(__git_ps1 '%%%s')${fgcolor}\\$ "
+unset yellow green red blue fgcolor
+
+alias cdr="cd ~/Documents/Code"
+eval "$(rbenv init -)"

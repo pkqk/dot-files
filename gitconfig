@@ -1,9 +1,10 @@
 [core]
-  excludesfile = /Users/adam/.dot-files.git/gitignore
+  excludesfile = /Users/adamjohnson/.dot-files.git/gitignore
 [user]
 	name = Adam Johnson
 	email = adam@pkqk.net
 [alias]
+  g = grep -in
   st = status
   ci = commit
   cia = commit -a
