@@ -48,9 +48,10 @@ alias gx="gitx"
 
 source ~/.bash_completion
 
-yellow="\[\e[0;33m\]"
+cyan="\[\e[0;36m\]"
 green="\[\e[0;32m\]"
 red="\[\e[0;31m\]"
 fgcolor="\[\e[0m\]"
-export PS1="${yellow}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
-unset yellow green red fgcolor
+export PS1="${cyan}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
+unset cyan green red fgcolor
+
