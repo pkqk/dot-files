@@ -11,8 +11,6 @@
   co = checkout
   cob = checkout -b
   d = diff
-  pu = push
-  pl = pull
 [color]
   branch = auto
   diff = auto
