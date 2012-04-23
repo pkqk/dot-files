@@ -1,19 +1,6 @@
-BASH_COMPLETION=~/.dot-files.git/bash_standard_completion
-source $BASH_COMPLETION
-# mategem completion
-_mategem()
-{
-  local curw
-  COMPREPLY=()
-  curw=${COMP_WORDS[COMP_CWORD]}
-  local gems="$(gem environment gemdir)/gems"
-  COMPREPLY=($(compgen -W '$(ls $gems)' -- $curw));
-  return 0;
-}
-complete -F _mategem -o dirnames mategem
 # rake completion
-BASH_COMPLETION_RB=~/.dot-files.git/bash_completion.rb
+BASH_COMPLETION_RB=$DOT/bash_completion.rb
 complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_tasks(:rake)'" -o default rake
 complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_tasks(:cap)'" -o default cap
 # git completion
-source ~/.dot-files.git/git_completion
+source $DOT/git_completion

@@ -1,4 +1,4 @@
 if [ -z "$PATH_HAS_BEEN_SET" ]; then
-  export PATH=~/bin:$PATH:/opt/local/bin:/usr/local/mysql/bin
+  export PATH=~/bin:/usr/local/bin:$PATH
   export PATH_HAS_BEEN_SET=yes
 fi

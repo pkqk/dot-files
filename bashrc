@@ -1,7 +1,12 @@
-source ~/.dot-files.git/bash_paths
+DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
+source $DOT/bash_paths
+source $DOT/bash_functions
+source $DOT/bash_completion
+
+export GREP_OPTIONS="--color=auto"
+export HISTCONTROL="ignoreboth"
+
 alias ls="ls -GF"
-alias rbfn="egrep '^[ \t]*(private|public|protected|def|class|module)'"
-alias isvn="egrep -v '\.svn'"
 
 alias pd="pushd"
 alias dp="popd"
@@ -22,9 +27,6 @@ export LESSEDIT='mate -l %lm %f'
 shopt -s extglob
 shopt -s histappend
 
-#source /etc/bash_completion
-source ~/.bash_functions
-
 alias ql="2> /dev/null qlmanage -p"
 
 alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate .'
@@ -34,7 +36,8 @@ alias r="rake"
 
 # Git aliases
 alias g="git"
-alias gs="git status"
+alias gg="git grep"
+alias gs="git status -s"
 alias gci="git commit -v"
 alias gb="git branch"
 alias gco="git checkout"
@@ -46,7 +49,7 @@ alias gf="git fetch"
 alias gfm="git pull"
 alias gx="gitx"
 
-source ~/.bash_completion
+eval "$(rbenv init -)"
 
 cyan="\[\e[0;36m\]"
 green="\[\e[0;32m\]"
