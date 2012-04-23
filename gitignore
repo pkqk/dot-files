@@ -2,3 +2,5 @@
 *.tmproj
 *.captab-*
 *.raketab-*
+*.pyc
+*.swp
