@@ -36,7 +36,7 @@ alias r="rake"
 
 # Git aliases
 alias g="git"
-alias gg="git grep"
+alias gg="git g"
 alias gs="git status -s"
 alias gci="git commit -v"
 alias gb="git branch"
@@ -47,6 +47,9 @@ alias gd="git diff"
 alias gp="git push"
 alias gf="git fetch"
 alias gfm="git pull"
+alias gfr="git pull --rebase"
+alias gr="git rebase"
+alias grc="git rebase --continue"
 alias gx="gitx"
 
 eval "$(rbenv init -)"

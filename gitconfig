@@ -11,6 +11,7 @@
   co = checkout
   cob = checkout -b
   d = diff
+  g = grep -in
 [color]
   branch = auto
   diff = auto
