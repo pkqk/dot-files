@@ -1,35 +1,43 @@
 set nocompatible
-syntax on
+set encoding=utf-8
+syntax enable
 filetype plugin indent on
-set nowrap
+if has('gui_running')
+    set background=light
+    set guifont=Monaco:h12
+    set guioptions-=T
+else
+    set background=dark
+endif
+colorscheme solarized
 
+set number
+
+"tab settings
+set smartindent
+set expandtab
 set tabstop=2
 set shiftwidth=2
-set expandtab
-
-set ruler
-set showcmd
-set incsearch
+set softtabstop=2
+set textwidth=79
+set shiftround
 set backspace=eol,start,indent
+
+set nowrap
+
+"search settings
+set incsearch
+set ignorecase
+set smartcase
 set showmatch
 
-set mouse=a
-
-set hid
-set nu
+set cursorline
+set ruler
 
 set laststatus=2
 function! CurDir()
-  let curdir = substitute(getcwd(), '/Users/adam/', "~/", "g")
+  let curdir = substitute(getcwd(), $HOME, "~", "g")
   return curdir
 endfunction
 "Format the statusline
-set statusline=\ %F%m%r%h\ %w\ \ cwd:\ %r%{CurDir()}%h\ \ \ line:\ %l/%L:%c
-
-if has("gui_running")
-  set gfn=Bitstream\ Vera\ Sans\ Mono:h14
-  set macatsui
-  set termencoding=macroman
-
-  set guioptions=T
-endif
+set statusline=\ %F\ cwd:\ %{CurDir()}\ %=line:\ %l/%L:%v\ 
