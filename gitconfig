@@ -36,5 +36,5 @@
 	autosetupmerge = true
 [status]
   submodulesummary = true
-[url "git@github.com:adamj/"]
+[url "git@github.com:pkqk/"]
   insteadOf = github:
