@@ -1,5 +1,6 @@
 [core]
   excludesfile = ~/.gitignore
+  quotepath = false
 [user]
 	name = Adam Sven Johnson
 	email = adam@pkqk.net
