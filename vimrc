@@ -44,3 +44,11 @@ set statusline=\ %F\ cwd:\ %{CurDir()}\ %=line:\ %l/%L:%v\
 
 set wildmode=longest,list,full
 set wildmenu
+
+"turn off all beeping
+set noerrorbells
+set visualbell t_vb=
+
+call pathogen#infect()
+
+map <C-t> :NERDTreeToggle<CR>
