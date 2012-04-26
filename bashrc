@@ -33,7 +33,6 @@ shopt -s histappend
 
 alias ql="2> /dev/null qlmanage -p"
 
-alias m='[ -f $(basename $(pwd)).tmproj ] && open $(basename $(pwd)).tmproj || mate .'
 alias sc="script/console"
 alias aspec="autospec"
 alias r="rake"
