@@ -52,7 +52,10 @@ alias gr="git rebase"
 alias grc="git rebase --continue"
 alias gx="gitx"
 
+if `which rbenv`
+then
 eval "$(rbenv init -)"
+fi
 
 cyan="\[\e[0;36m\]"
 green="\[\e[0;32m\]"
