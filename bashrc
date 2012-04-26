@@ -1,4 +1,8 @@
-DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
+if [ -L ~/.bashrc ]; then
+  DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
+else
+  DOT="$HOME/.dot"
+fi
 source $DOT/bash_paths
 source $DOT/bash_functions
 source $DOT/bash_completion
