@@ -15,26 +15,12 @@ alias ls="ls -GF"
 alias pd="pushd"
 alias dp="popd"
 
-alias p3="python3.0"
-
-if [ -x "`which mate_wait`" ]
-then
-  export EDITOR=mate_wait
-elif [ -x "`which mate`" ]
-then
-  export EDITOR="mate -w"
-else
-  export EDITOR=vim
-fi
-export LESSEDIT='mate -l %lm %f'
+export EDITOR=vim
 
 shopt -s extglob
 shopt -s histappend
 
-alias ql="2> /dev/null qlmanage -p"
-
 alias sc="script/console"
-alias aspec="autospec"
 alias r="rake"
 
 # Git aliases
@@ -47,6 +33,7 @@ alias gco="git checkout"
 alias gm="git merge"
 alias ga="git add"
 alias gd="git diff"
+alias gdc="git diff --cached"
 alias gp="git push"
 alias gf="git fetch"
 alias gfm="git pull"
