@@ -10,7 +10,12 @@ source $DOT/bash_completion
 export GREP_OPTIONS="--color=auto"
 export HISTCONTROL="ignoreboth"
 
-alias ls="ls -GF"
+if ls --version 2&>/dev/null
+then
+  alias ls="ls -F --color=auto"
+else
+  alias ls="ls -GF"
+fi
 
 alias pd="pushd"
 alias dp="popd"
