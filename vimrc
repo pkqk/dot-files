@@ -12,6 +12,7 @@ endif
 colorscheme solarized
 
 set number
+set wildignore=*.pyc
 
 "tab settings
 set smartindent
