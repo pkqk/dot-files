@@ -53,3 +53,4 @@ set visualbell t_vb=
 call pathogen#infect()
 
 map <Leader>t :NERDTreeTabsToggle<CR>
+map <Leader>f :NERDTreeFind<CR>
