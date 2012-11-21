@@ -41,7 +41,7 @@ function! CurDir()
   return curdir
 endfunction
 "Format the statusline
-set statusline=\ %F\ cwd:\ %{CurDir()}\ %=line:\ %l/%L:%v\ 
+set statusline=\ %F\ cwd:\ %{CurDir()}\ %=%{fugitive#head()}\ %=line:\ %l/%L:%v\ 
 
 set wildmode=longest,list,full
 set wildmenu
