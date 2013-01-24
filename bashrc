@@ -48,6 +48,11 @@ alias gr="git rebase"
 alias grc="git rebase --continue"
 alias gx="gitx"
 
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=1
+export GIT_PS1_SHOWSTASHSTATE=1
+
 if which rbenv > /dev/null
 then
   eval "$(rbenv init -)"
