@@ -1,6 +1,10 @@
+Icon
+.dropbox
 .DS_Store
 *.tmproj
 *.captab-*
 *.raketab-*
 *.pyc
 *.swp
+.chef
+.vagrant
