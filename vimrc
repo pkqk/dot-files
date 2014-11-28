@@ -63,6 +63,8 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+highlight clear SignColumn
+
 " center cursor line in middle of screen
 nmap <space> zz
 nmap n nzz
