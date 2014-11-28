@@ -62,3 +62,8 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" center cursor line in middle of screen
+nmap <space> zz
+nmap n nzz
+nmap N Nzz
