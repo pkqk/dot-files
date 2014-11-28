@@ -8,3 +8,5 @@ Icon
 *.swp
 .chef
 .vagrant
+.bundle/*
+.vendor/*
