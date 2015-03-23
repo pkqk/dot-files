@@ -48,6 +48,8 @@ alias gr="git rebase"
 alias grc="git rebase --continue"
 alias gx="gitx"
 
+alias vimwipe="find . -name '*.sw[op]' -delete"
+
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
