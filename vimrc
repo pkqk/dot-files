@@ -50,6 +50,7 @@ set visualbell t_vb=
 
 call pathogen#infect()
 
+let g:nerdtree_tabs_open_on_gui_startup = 0
 map <Leader>t :NERDTreeTabsToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
 map <Leader>c :CtrlPClearCache<CR>
