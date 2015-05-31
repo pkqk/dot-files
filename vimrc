@@ -9,6 +9,8 @@ if has('gui_running')
 else
     set background=dark
 endif
+let g:solarized_termcolors=16
+let g:solarized_termtrans=1
 colorscheme solarized
 
 set number
