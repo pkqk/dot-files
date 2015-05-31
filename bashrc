@@ -73,5 +73,6 @@ eval `docker-osx env`
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 source /opt/boxen/env.sh
