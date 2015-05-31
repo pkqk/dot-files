@@ -8,7 +8,9 @@ source $DOT/bash_functions
 source $DOT/bash_completion
 
 export GREP_OPTIONS="--color=auto"
-export HISTCONTROL="ignoreboth"
+export HISTCONTROL="ignoredups"
+shopt -s histappend
+
 
 if ls --version 2&>/dev/null
 then
