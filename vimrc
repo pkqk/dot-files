@@ -61,6 +61,7 @@ nnoremap <C-l> <C-w>l
 
 highlight clear SignColumn
 let g:gitgutter_sign_column_always = 1
+let g:gitgutter_sign_modified = "! "
 
 " center cursor line in middle of screen
 nmap <space> zz
