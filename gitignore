@@ -6,6 +6,7 @@ Icon
 *.raketab-*
 *.pyc
 *.swp
+*.swo
 .chef
 .vagrant
 .bundle/*
