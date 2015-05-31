@@ -4,7 +4,7 @@ syntax enable
 filetype plugin indent on
 if has('gui_running')
     set background=light
-    set guifont=Monaco:h12
+    set guifont=Monaco\ for\ Powerline:h12
     set guioptions-=T
 else
     set background=dark
@@ -37,12 +37,7 @@ set cursorline
 set ruler
 
 set laststatus=2
-function! CurDir()
-  let curdir = substitute(getcwd(), $HOME, "~", "g")
-  return curdir
-endfunction
-"Format the statusline
-set statusline=\ %F\ cwd:\ %{CurDir()}\ %=%{fugitive#head()}\ %=line:\ %l/%L:%v\ 
+let g:airline_powerline_fonts = 1
 
 set wildmode=longest,list,full
 set wildmenu
