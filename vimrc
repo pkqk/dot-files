@@ -1,5 +1,8 @@
 set nocompatible
 set encoding=utf-8
+" let me change between buffers without saving
+set hidden
+
 syntax enable
 filetype plugin indent on
 if has('gui_running')
