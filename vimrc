@@ -1,5 +1,10 @@
 set nocompatible
 set encoding=utf-8
+
+" no need for old school saving
+set nobackup
+set noswapfile
+
 " let me change between buffers without saving
 set hidden
 
