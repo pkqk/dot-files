@@ -9,5 +9,5 @@ Icon
 *.swo
 .chef
 .vagrant
-.bundle/*
-.vendor/*
+.bundle
+.vendor
