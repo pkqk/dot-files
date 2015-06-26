@@ -70,3 +70,7 @@ let g:gitgutter_sign_modified = "! "
 nmap <space> zz
 nmap n nzz
 nmap N Nzz
+
+set list
+" set listchars:tab:→,eol:␍,nbsp:·,trail:␣,eol:¶
+set listchars:tab:⇥·,eol:␍,trail:␣,nbsp:·,extends:→,precedes:←
