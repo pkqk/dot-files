@@ -28,6 +28,9 @@ set shiftround
 set backspace=eol,start,indent
 
 set nowrap
+" move up and down per editor line not document line (for when wrapping is on)
+nnoremap j gj
+nnoremap k gk
 
 "search settings
 set incsearch
