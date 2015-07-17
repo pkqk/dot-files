@@ -75,4 +75,7 @@ eval `docker-osx env`
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
-source /opt/boxen/env.sh
+if [ -t /opt/boxen/env.sh ]
+then
+  source /opt/boxen/env.sh
+fi
