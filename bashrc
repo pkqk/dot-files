@@ -69,7 +69,10 @@ fgcolor="\[\e[0m\]"
 export PS1="${cyan}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
 unset cyan green red fgcolor
 
-eval `docker-osx env`
+if which docker-osx > /dev/null
+then
+  eval `docker-osx env`
+fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
