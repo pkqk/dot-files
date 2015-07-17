@@ -41,6 +41,3 @@
   submodulesummary = true
 [url "git@github.com:pkqk/"]
   insteadOf = github:
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
