@@ -41,3 +41,7 @@
   submodulesummary = true
 [url "git@github.com:pkqk/"]
   insteadOf = github:
+[merge]
+	conflictstyle = diff3
+[rerere]
+	enabled = 1
