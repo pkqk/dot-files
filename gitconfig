@@ -41,6 +41,8 @@
   submodulesummary = true
 [url "git@github.com:pkqk/"]
   insteadOf = github:
+[rebase]
+	autosquash = true
 [merge]
 	conflictstyle = diff3
 [rerere]
