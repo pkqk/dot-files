@@ -27,6 +27,7 @@ export EDITOR=vim
 shopt -s extglob
 shopt -s histappend
 
+alias cdwork="cd -P ~/work"
 
 # Git aliases
 alias g="git"
