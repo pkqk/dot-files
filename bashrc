@@ -6,6 +6,10 @@ fi
 source $DOT/bash_paths
 source $DOT/bash_functions
 source $DOT/bash_completion
+if [ -f "$DOT/bash_secret" ]
+then
+  source $DOT/bash_secret
+fi
 
 export GREP_OPTIONS="--color=auto"
 export HISTCONTROL="ignoredups"
