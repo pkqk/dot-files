@@ -11,3 +11,4 @@ Icon
 .vagrant
 .bundle
 .vendor
+.powenv
