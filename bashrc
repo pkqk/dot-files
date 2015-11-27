@@ -27,8 +27,6 @@ export EDITOR=vim
 shopt -s extglob
 shopt -s histappend
 
-alias sc="script/console"
-alias r="rake"
 
 # Git aliases
 alias g="git"
