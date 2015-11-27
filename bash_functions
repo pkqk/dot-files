@@ -1,4 +1,16 @@
 #!/usr/bin/bash
+function dot {
+  if [ -L ~/.bashrc ]; then
+    echo "$HOME/$(dirname $(readlink ~/.bashrc))"
+  else
+    echo "$HOME/.dot"
+  fi
+}
+
+function cddot {
+  cd `dot`
+}
+
 function svnrev {
   svn info | grep Revision | sed -e 's/Revision: //'
 }
