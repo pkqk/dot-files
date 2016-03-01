@@ -92,3 +92,11 @@ if [ -t /opt/boxen/env.sh ]
 then
   source /opt/boxen/env.sh
 fi
+
+if [ -d /usr/local/etc/bash_completion.d ]
+then
+  for i in /usr/local/etc/bash_completion.d/*
+  do
+    source $i
+  done
+fi
