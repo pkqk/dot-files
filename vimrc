@@ -23,7 +23,7 @@ colorscheme solarized
 
 set number
 set wildignore=*.pyc,.bundle/*,.vendor/*,coverage/*
-let g:ctrlp_custom_ignore = '\v[\/](\.(git|vendor|bundle)|coverage)$'
+let g:ctrlp_custom_ignore = '\v[\/](\.(git|vendor|bundle)|coverage|node_modules)$'
 
 "tab settings
 set smartindent
