@@ -12,7 +12,7 @@ then
 fi
 
 export GREP_OPTIONS="--color=auto"
-export HISTCONTROL="ignoredups"
+export HISTCONTROL="erasedups"
 shopt -s histappend
 
 
