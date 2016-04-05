@@ -72,16 +72,9 @@ fgcolor="\[\e[0m\]"
 export PS1="${cyan}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
 unset cyan green red fgcolor
 
-# if using docker-osx
-if which docker-osx > /dev/null
-then
-  eval `docker-osx env`
-fi
 if [ -d ~/.docker/machine/machines/default ]
 then
-  export DOCKER_HOST=tcp://$(docker-machine ip default):2376
-  export DOCKER_CERT_PATH=~/.docker/machine/machines/default
-  export DOCKER_TLS_VERIFY=1
+  eval $(docker-machine env default)
 fi
 
 ### Added by the Heroku Toolbelt
