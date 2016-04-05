@@ -85,3 +85,5 @@ nmap N Nzz
 set list
 " set listchars:tab:→,eol:␍,nbsp:·,trail:␣,eol:¶
 set listchars:tab:⇥·,eol:␍,trail:␣,nbsp:·,extends:→,precedes:←
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
