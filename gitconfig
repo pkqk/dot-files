@@ -4,6 +4,7 @@
 [user]
 	name = Adam Sven Johnson
 	email = adam@pkqk.net
+	signingkey = E5AF379E
 [push]
   default = current
 [alias]
