@@ -14,5 +14,5 @@ These are my dotfiles
 
 ## useful bashisms
 
-`cddot` will take you to the dotfiles directory
-`$DOT` will be set to the dotfiles directory
+* `cddot` will take you to the dotfiles directory
+* `$DOT` will be set to the dotfiles directory
