@@ -3,4 +3,20 @@ BASH_COMPLETION_RB=$DOT/bash_completion.rb
 complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_tasks(:rake)'" -o default rake
 complete -C "ruby -r${BASH_COMPLETION_RB} -e 'puts complete_tasks(:cap)'" -o default cap
 # git completion
-source $DOT/git_completion
+source $DOT/git_completion.bash
+
+__git_complete g __git_main
+__git_complete gci _git_commit
+__git_complete gb _git_branch
+__git_complete gco _git_checkout
+__git_complete gm _git_merge
+__git_complete ga _git_add
+__git_complete gd _git_diff
+__git_complete gdc _git_diff
+__git_complete gp _git_push
+__git_complete gf _git_fetch
+__git_complete gfm _git_pull
+__git_complete gfr _git_pull
+__git_complete gff _git_pull
+__git_complete gr _git_rebase
+__git_complete grc _git_rebase
