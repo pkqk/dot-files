@@ -6,7 +6,7 @@
 	email = adam@pkqk.net
 	signingkey = E5AF379E
 [push]
-  default = current
+  default = upstream
 [alias]
   st = status
   ci = commit
