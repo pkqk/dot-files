@@ -96,3 +96,8 @@ then
     source $i
   done
 fi
+
+if [ -f "$DOT/bash_local" ]
+then
+  source $DOT/bash_local
+fi
