@@ -88,11 +88,6 @@ alias dlog="docker-compose logs --tail=10 -f"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 
-if [ -t /opt/boxen/env.sh ]
-then
-  source /opt/boxen/env.sh
-fi
-
 if [ -d /usr/local/etc/bash_completion.d ]
 then
   for i in /usr/local/etc/bash_completion.d/*
