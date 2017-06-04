@@ -12,3 +12,5 @@ Icon
 .bundle
 .vendor
 .powenv
+.docker-commands
+.env.local
