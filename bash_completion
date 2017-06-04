@@ -23,3 +23,4 @@ __git_complete grc _git_rebase
 
 source $DOT/completion/docker
 source $DOT/completion/docker-compose
+complete -F _docker_compose dc

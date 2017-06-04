@@ -127,6 +127,7 @@ __docker_complete_images() {
 
 	local images=$(__docker_q images $images_args | awk "$awk_script")
 	COMPREPLY=( $(compgen -W "$images" -- "$cur") )
+  echo "cur is ${cur}"
 	__ltrim_colon_completions "$cur"
 }
 
@@ -508,7 +509,7 @@ __docker_complete_log_driver_options() {
 			return
 			;;
 		syslog-format)
-			COMPREPLY=( $( compgen -W "rfc3164 rfc5424 rfc5424micro" -- "${cur##*=}" ) )
+			COMPREPLY=( $( compgen -W "rfc3164 rfc5424" -- "${cur##*=}" ) )
 			return
 			;;
 		syslog-tls-@(ca-cert|cert|key))
@@ -1378,11 +1379,6 @@ _docker_network_inspect() {
 _docker_network_ls() {
 	local key=$(__docker_map_key_of_current_option '--filter|-f')
 	case "$key" in
-		driver)
-			local plugins=" $(__docker_plugins Network) "
-			COMPREPLY=( $(compgen -W "$plugins" -- "${cur##*=}") )
-			return
-			;;
 		id)
 			cur="${cur##*=}"
 			__docker_complete_network_ids
@@ -1401,7 +1397,7 @@ _docker_network_ls() {
 
 	case "$prev" in
 		--filter|-f)
-			COMPREPLY=( $( compgen -S = -W "driver id label name type" -- "$cur" ) )
+			COMPREPLY=( $( compgen -S = -W "id name type" -- "$cur" ) )
 			__docker_nospace
 			return
 			;;
@@ -1676,7 +1672,6 @@ _docker_run() {
 		--shm-size
 		--stop-signal
 		--tmpfs
-		--sysctl
 		--ulimit
 		--user -u
 		--userns
@@ -2083,21 +2078,11 @@ _docker_volume_ls() {
 			COMPREPLY=( $( compgen -W "true false" -- "${cur##*=}" ) )
 			return
 			;;
-		driver)
-			cur=${cur##*=}
-			__docker_complete_plugins Volume
-			return
-			;;
-		name)
-			cur=${cur##*=}
-			__docker_complete_volumes
-			return
-			;;
 	esac
 
 	case "$prev" in
 		--filter|-f)
-			COMPREPLY=( $( compgen -S = -W "dangling driver name" -- "$cur" ) )
+			COMPREPLY=( $( compgen -S = -W "dangling" -- "$cur" ) )
 			__docker_nospace
 			return
 			;;
