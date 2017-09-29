@@ -77,11 +77,6 @@ fgcolor="\[\e[0m\]"
 export PS1="${cyan}\h${fgcolor}:${green}\W${red}\$(__git_ps1 '(%s)')${fgcolor}\\$ "
 unset cyan green red fgcolor
 
-if [ -d ~/.docker/machine/machines/default ]
-then
-  eval $(docker-machine env default)
-fi
-
 alias dc=docker-compose
 alias dr="docker-compose run --rm"
 alias dlog="docker-compose logs --tail=10 -f"
