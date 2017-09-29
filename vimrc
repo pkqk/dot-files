@@ -12,8 +12,8 @@ syntax enable
 filetype plugin indent on
 if has('gui_running')
     set background=light
-    set guifont=Monaco\ for\ Powerline:h12
-    set guioptions-=T
+    set guifont=Monaco\ for\ Powerline:h11
+    set guioptions=eagm "disable all scrollbars
 else
     set background=dark
 endif
@@ -66,7 +66,8 @@ call pathogen#infect()
 let g:nerdtree_tabs_open_on_gui_startup = 0
 map <Leader>t :NERDTreeTabsToggle<CR>
 map <Leader>f :NERDTreeFind<CR>
-map <Leader>c :CtrlPClearCache<CR>
+"map <Leader>c :CtrlPClearCache<CR>
+map <C-p> :CommandT<CR>
 
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
