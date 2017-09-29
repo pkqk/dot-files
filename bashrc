@@ -33,6 +33,8 @@ shopt -s histappend
 
 alias cdwork="cd -P ~/work"
 
+alias ymdhms="date +%Y%m%d%H%M%S"
+
 # Git aliases
 alias g="git"
 alias gg="git g"
