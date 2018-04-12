@@ -1,5 +1,6 @@
-# git completion
-source $DOT/completion/git
+export BASH_COMPLETION=$DOT/bash_standard_completion
+export BASH_COMPLETION_DIR=$DOT/completion
+source $DOT/bash_standard_completion
 
 __git_complete g __git_main
 __git_complete gci _git_commit
@@ -17,6 +18,4 @@ __git_complete gff _git_pull
 __git_complete gr _git_rebase
 __git_complete grc _git_rebase
 
-source $DOT/completion/docker
-source $DOT/completion/docker-compose
 complete -F _docker_compose dc
