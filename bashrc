@@ -26,7 +26,7 @@ fi
 alias pd="pushd"
 alias dp="popd"
 
-export EDITOR=vim
+export EDITOR=${EDITOR:-vim}
 
 shopt -s extglob
 shopt -s histappend
