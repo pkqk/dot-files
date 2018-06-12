@@ -27,3 +27,7 @@ aws(){
     --name aws \
     ${DOCKER_REPO_PREFIX}/awscli "$@"
 }
+
+ecrlogin() {
+  $(aws ecr get-login --region us-east-1 --no-include-email | tr -d '\r')
+}
