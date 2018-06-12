@@ -1,0 +1,25 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.gitExplorer.enabled": false,
+    "github.remoteName": "movio",
+    "workbench.sideBar.location": "right",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "files.exclude": {
+        "vendor/*": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.minimap.renderCharacters": true,
+    "editor.minimap.enabled": false,
+    "editor.rulers": [
+        80
+    ],
+    "editor.smoothScrolling": true,
+    "terminal.integrated.env.osx": {
+        "EDITOR": "code -w"
+    }
+}
