@@ -16,10 +16,17 @@
     "editor.minimap.renderCharacters": true,
     "editor.minimap.enabled": false,
     "editor.rulers": [
-        80
+        50, 80
     ],
     "editor.smoothScrolling": true,
     "terminal.integrated.env.osx": {
         "EDITOR": "code -w"
-    }
+    },
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "window.zoomLevel": 0,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": false
 }
