@@ -22,6 +22,7 @@
     git config atom-blame.browser-url $(git config remote.${1:-$(git remote show -n | head -1)}.url | sed -e 's/:/\\//' -e 's/\\.git//' -e 's/git@/https:\\/\\//')'/commit/{hash}'; \
     }; f"
   fixup = !GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash
+  cleanup = "!git branch -v | awk '{ if($3 == \"[gone]\") print $1}' | xargs git branch -d"
 [color]
   branch = auto
   diff = auto
