@@ -35,3 +35,5 @@ ecrlogin() {
 fixsound() {
   ps ax | grep '[c]oreaudiod' | awk '{print $1}' | sudo xargs kill
 }
+
+function pcd { cd ${PWD%/$1/*}/$1; }
