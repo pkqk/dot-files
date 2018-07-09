@@ -31,3 +31,7 @@ aws(){
 ecrlogin() {
   $(aws ecr get-login --region us-east-1 --no-include-email | tr -d '\r')
 }
+
+fixsound() {
+  ps ax | grep '[c]oreaudiod' | awk '{print $1}' | sudo xargs kill
+}
