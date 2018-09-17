@@ -28,5 +28,6 @@
     "window.zoomLevel": 0,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.renderWhitespace": "none",
-    "editor.renderControlCharacters": false
+    "editor.renderControlCharacters": false,
+    "breadcrumbs.enabled": true
 }
