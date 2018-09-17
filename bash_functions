@@ -19,17 +19,8 @@ function serve {
   ruby -rwebrick -e "w = WEBrick::HTTPServer.new(:Port => ${port}, :DocumentRoot => '.'); %w(TERM INT).each {|s| trap(s) {w.shutdown}};w.start"
 }
 
-DOCKER_REPO_PREFIX=jess
-aws(){
-  docker run -it --rm \
-    -v "${HOME}/.aws:/root/.aws" \
-    --log-driver none \
-    --name aws \
-    ${DOCKER_REPO_PREFIX}/awscli "$@"
-}
-
 ecrlogin() {
-  $(aws ecr get-login --region us-east-1 --no-include-email | tr -d '\r')
+  $(aws ecr get-login --region us-east-1 --no-include-email)
 }
 
 fixsound() {
