@@ -15,7 +15,7 @@ if has('gui_running')
     set guifont=Monaco\ for\ Powerline:h11
     set guioptions=eagm "disable all scrollbars
 else
-    set background=dark
+    set background=light
 endif
 let g:solarized_termcolors=16
 let g:solarized_termtrans=1
