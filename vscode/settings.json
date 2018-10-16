@@ -29,5 +29,15 @@
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": false,
-    "breadcrumbs.enabled": true
+    "breadcrumbs.enabled": true,
+    "github.hosts": [
+        {
+            "host": "https://github.com",
+            "username": "oauth",
+            "token": "system"
+        }
+    ],
+    "files.autoSave": "onFocusChange",
+    "editor.largeFileOptimizations": false,
+    "editor.suggest.localityBonus": true
 }
