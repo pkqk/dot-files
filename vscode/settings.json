@@ -30,14 +30,14 @@
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": false,
     "breadcrumbs.enabled": true,
-    "github.hosts": [
+    "files.autoSave": "onFocusChange",
+    "editor.largeFileOptimizations": false,
+    "editor.suggest.localityBonus": true,
+    "githubPullRequests.hosts": [
         {
             "host": "https://github.com",
             "username": "oauth",
             "token": "system"
         }
-    ],
-    "files.autoSave": "onFocusChange",
-    "editor.largeFileOptimizations": false,
-    "editor.suggest.localityBonus": true
+    ]
 }
