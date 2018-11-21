@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-function dot {
+function dotloc {
   if [ -L ~/.bashrc ]; then
     echo "$HOME/$(dirname $(readlink ~/.bashrc))"
   else
@@ -8,7 +8,7 @@ function dot {
 }
 
 function cddot {
-  cd `dot`
+  cd `dotloc`
 }
 
 function serve {
