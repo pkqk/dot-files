@@ -57,3 +57,5 @@
 	enabled = 1
 [fetch]
 	prune = true
+[pull]
+	rebase = true
