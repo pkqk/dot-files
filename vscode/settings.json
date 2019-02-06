@@ -4,7 +4,6 @@
         "suppressShowKeyBindingsNotice": true
     },
     "gitlens.gitExplorer.enabled": false,
-    "github.remoteName": "movio",
     "workbench.sideBar.location": "right",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
@@ -30,14 +29,15 @@
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": false,
     "breadcrumbs.enabled": true,
-    "files.autoSave": "onFocusChange",
     "editor.largeFileOptimizations": false,
     "editor.suggest.localityBonus": true,
-    "githubPullRequests.hosts": [
-        {
-            "host": "https://github.com",
-            "username": "oauth",
-            "token": "system"
-        }
-    ]
+    "[yaml]": {
+
+    },
+    "files.associations": {
+        "*.yaml": "yaml"
+    },
+    "gitlens.views.repositories.enabled": false,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true
 }
