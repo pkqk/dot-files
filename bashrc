@@ -12,9 +12,10 @@ then
 fi
 
 export GREP_OPTIONS="--color=auto"
-export HISTCONTROL="erasedups"
-shopt -s histappend
 
+export HISTCONTROL="ignoredups:erasedups"
+export HISTSIZE=10000
+shopt -s histappend
 
 if ls --version 2&>/dev/null
 then
@@ -29,7 +30,6 @@ alias dp="popd"
 export EDITOR=${EDITOR:-vim}
 
 shopt -s extglob
-shopt -s histappend
 
 alias cdwork="cd -P ~/work"
 
