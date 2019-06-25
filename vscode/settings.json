@@ -3,14 +3,12 @@
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
-    "gitlens.gitExplorer.enabled": false,
-    "workbench.sideBar.location": "right",
+    "workbench.sideBar.location": "left",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "files.exclude": {
         "vendor/*": true
     },
-    "gitlens.historyExplorer.enabled": true,
     "editor.cursorBlinking": "phase",
     "editor.minimap.renderCharacters": true,
     "editor.minimap.enabled": false,
@@ -21,9 +19,7 @@
     "terminal.integrated.env.osx": {
         "EDITOR": "code -w"
     },
-    "files.insertFinalNewline": true,
     "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": true,
     "window.zoomLevel": 0,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.renderWhitespace": "none",
@@ -39,5 +35,28 @@
     },
     "gitlens.views.repositories.enabled": false,
     "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true
+    "gitlens.views.lineHistory.enabled": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "explorer.confirmDelete": false,
+    "bracket-pair-colorizer-2.colors": [
+        "#b58900",
+        "#cb4b16",
+        "#dc322f",
+        "#d33682",
+        "#6c71c4",
+        "#268bd2",
+        "#2aa198",
+        "#859900"
+    ],
+    "indentRainbow.colors": [
+        "rgba(220,50,47,0.08)",
+        "rgba(181,137,0,0.08)",
+        "rgba(203,75,22,0.08)",
+        "rgba(108,113,196,0.08)",
+        "rgba(211,54,130,0.08)",
+        "rgba(42,161,152,0.08)",
+        "rgba(38,139,210,0.08)",
+        "rgba(133,153,0,0.08)"
+    ]
 }
