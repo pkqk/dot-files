@@ -58,5 +58,19 @@
         "rgba(42,161,152,0.08)",
         "rgba(38,139,210,0.08)",
         "rgba(133,153,0,0.08)"
-    ]
+    ],
+    "files.autoSave": "onFocusChange",
+    "go.useLanguageServer": true,
+    "[go]": {
+        "editor.snippetSuggestions": "none",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        }
+    },
+    "gopls": {
+        "usePlaceholders": true // add parameter placeholders when completing a function
+    },
+    "shellcheck.executablePath": "/Users/adamj/bin/shellcheck",
+    "files.eol": "\n" // formatting only supports LF line endings,
 }
