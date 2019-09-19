@@ -72,5 +72,10 @@
         "usePlaceholders": true // add parameter placeholders when completing a function
     },
     "shellcheck.executablePath": "/Users/adamj/bin/shellcheck",
-    "files.eol": "\n" // formatting only supports LF line endings,
+    "files.eol": "\n",
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "movio"
+    ] // formatting only supports LF line endings,
 }
