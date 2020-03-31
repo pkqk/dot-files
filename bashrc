@@ -99,3 +99,5 @@ if [ -f "$DOT/bash_local" ]
 then
   source $DOT/bash_local
 fi
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
