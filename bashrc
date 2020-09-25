@@ -83,10 +83,6 @@ alias dc=docker-compose
 alias dr="docker-compose run --rm"
 alias dlog="docker-compose logs --tail=10 -f"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/usr/local/go/bin:$PATH"
-
 if [ -d /usr/local/etc/bash_completion.d ]
 then
   for i in /usr/local/etc/bash_completion.d/*
