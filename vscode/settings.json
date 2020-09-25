@@ -3,7 +3,7 @@
     "gitlens.advanced.messages": {
         "suppressShowKeyBindingsNotice": true
     },
-    "workbench.sideBar.location": "left",
+    "workbench.sideBar.location": "right",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "files.exclude": {
@@ -75,7 +75,60 @@
     "files.eol": "\n",
     "githubPullRequests.remotes": [
         "origin",
-        "upstream",
         "movio"
-    ] // formatting only supports LF line endings,
+    ],
+    "workbench.startupEditor": "newUntitledFile", // formatting only supports LF line endings,
+    "go.coverOnSave": true,
+    "go.coverageDecorator": {
+        "type": "gutter",
+        "coveredGutterStyle": "blockgreen",
+        "uncoveredGutterStyle": "blockred"
+    },
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "file",
+    "zenMode.centerLayout": false,
+    "zenMode.hideLineNumbers": false,
+    "editor.fontSize": 14,
+    "timeline.excludeSources": [],
+    "terraform.indexing": {
+        "enabled": true,
+        "liveIndexing": false,
+        "delay": 500,
+        "exclude": [
+            ".terraform/**/*",
+            "**/.terraform/**/*"
+        ]
+    },
+    "terraform.languageServer": {
+        "external": true,
+        "args": [
+            "serve"
+        ]
+    },
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "default"
+        },
+        {
+            "label": "Created Issues",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:updated-desc"
+        }
+    ],
+    "githubPullRequests.queries": [
+
+        {
+            "label": "Waiting For My Review",
+            "query": "is:open review-requested:${user}"
+        },
+        {
+            "label": "Assigned To Me",
+            "query": "is:open assignee:${user}"
+        },
+        {
+            "label": "Created By Me",
+            "query": "is:open author:${user}"
+        }
+    ],
+    "workbench.editor.showTabs": true
 }
