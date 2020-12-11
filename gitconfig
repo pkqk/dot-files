@@ -18,9 +18,6 @@
   ff = pull --ff-only
   hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
   graph = log --color --graph --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
-  atom-blame = "!f() {\
-    git config atom-blame.browser-url $(git config remote.${1:-$(git remote show -n | head -1)}.url | sed -e 's/:/\\//' -e 's/\\.git//' -e 's/git@/https:\\/\\//')'/commit/{hash}'; \
-    }; f"
   fixup = !GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash
   cleanup = "!git branch -v | awk '{ if($3 == \"[gone]\") print $1}' | xargs -n 1 git branch -d"
 [color]
