@@ -31,8 +31,6 @@ export EDITOR=${EDITOR:-vim}
 
 shopt -s extglob
 
-alias cdwork="cd -P ~/work"
-
 alias ymdhms="date +%Y%m%d%H%M%S"
 
 # Git aliases
@@ -52,9 +50,9 @@ alias gf="git fetch"
 alias gfm="git pull"
 alias gfr="git pull --rebase"
 alias gff="git pull --ff-only && git cleanup"
+alias gaff="git pull --autostash --ff-only && git cleanup"
 alias gr="git rebase"
 alias grc="git rebase --continue"
-alias gx="gitx"
 
 alias vimwipe="find . -name '*.sw[op]' -delete"
 
