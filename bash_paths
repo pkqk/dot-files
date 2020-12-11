@@ -1,4 +1,4 @@
-if [ -z "$PATH_HAS_BEEN_SET" ]; then
+if [ -z "$DOT_PATH_SET" ]; then
   ### Added by the Heroku Toolbelt
   if [ -d "/usr/local/heroku/bin" ]
   then
@@ -10,5 +10,5 @@ if [ -z "$PATH_HAS_BEEN_SET" ]; then
   fi
 
   export PATH=~/bin:/usr/local/bin:$PATH
-  export PATH_HAS_BEEN_SET=yes
+  export DOT_PATH_SET=yes
 fi
