@@ -2,9 +2,8 @@
   excludesfile = gitignore
   quotepath = false
 [user]
-	name = Adam Sven Johnson
-	email = adam@pkqk.net
-	signingkey = 12618403E5AF379E
+  name = Adam Sven Johnson
+  email = adam@pkqk.net
 [push]
   default = upstream
 [alias]
