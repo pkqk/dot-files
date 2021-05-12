@@ -1,5 +1,5 @@
 [core]
-  excludesfile = /Users/pkqk/.gitignore
+  excludesfile = gitignore
   quotepath = false
 [user]
 	name = Adam Sven Johnson
