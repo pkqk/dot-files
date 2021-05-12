@@ -20,7 +20,6 @@
         "EDITOR": "code -w"
     },
     "files.trimTrailingWhitespace": true,
-    "window.zoomLevel": 0,
     "diffEditor.ignoreTrimWhitespace": false,
     "editor.renderWhitespace": "none",
     "editor.renderControlCharacters": false,
@@ -71,7 +70,6 @@
     "gopls": {
         "usePlaceholders": true // add parameter placeholders when completing a function
     },
-    "shellcheck.executablePath": "/Users/adamj/bin/shellcheck",
     "files.eol": "\n",
     "githubPullRequests.remotes": [
         "origin",
@@ -130,5 +128,22 @@
             "query": "is:open author:${user}"
         }
     ],
-    "workbench.editor.showTabs": true
+    "workbench.editor.showTabs": true,
+    "go.toolsManagement.autoUpdate": true,
+    "bracket-pair-colorizer-2.activeScopeCSS": [
+
+        "borderStyle : solid",
+        "borderWidth : 1px",
+        "borderColor : {color}",
+        "opacity: 0.5"
+    ],
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
+    "shellcheck.customArgs": [
+        "-x"
+    ]
 }
