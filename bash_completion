@@ -19,3 +19,7 @@ __git_complete gr _git_rebase
 __git_complete grc _git_rebase
 
 complete -F _docker_compose dc
+
+if [[ -s $(which aws_completer) ]]; then
+  complete -C $(which aws_completer) aws
+fi
