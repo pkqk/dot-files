@@ -69,12 +69,16 @@ then
   eval "$(rbenv init -)"
 fi
 
-cyan=$(tput setaf 6)
-red=$(tput setaf 1)
-magenta=$(tput setaf 5)
-fgcolor=$(tput sgr0)
-export PS1="\[${cyan}\]\W\[${red}\]"'$(__git_ps1 "(%s)")'"\[${magenta}\]\$ \[${fgcolor}\]"
-unset cyan red magenta fgcolor
+case "${TERM}" in
+  xterm*)
+    cyan=$(tput setaf 6)
+    red=$(tput setaf 1)
+    magenta=$(tput setaf 5)
+    fgcolor=$(tput sgr0)
+    export PS1="\[${cyan}\]\W\[${red}\]"'$(__git_ps1 "(%s)")'"\[${magenta}\]\$ \[${fgcolor}\]"
+    unset cyan red magenta fgcolor
+  ;;
+esac
 
 alias dc=docker-compose
 alias dr="docker-compose run --rm"
