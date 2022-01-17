@@ -148,6 +148,5 @@
     "security.workspace.trust.untrustedFiles": "open",
     "editor.tabSize": 2,
     "editor.guides.bracketPairs": "active",
-    "editor.bracketPairColorization.enabled": true,
-    "window.zoomLevel": 2
+    "editor.bracketPairColorization.enabled": true
 }
