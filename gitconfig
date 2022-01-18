@@ -43,8 +43,6 @@
 	autosetupmerge = true
 [status]
   submodulesummary = true
-[url "git@github.com:pkqk/"]
-  insteadOf = github:
 [rebase]
 	autosquash = true
 [merge]
@@ -57,5 +55,9 @@
 	rebase = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
+[url "git@github.com:movio/"]
+  insteadOf = movio:
+[url "git@github.com:pkqk/"]
+  insteadOf = pkqk:
 [init]
 	defaultBranch = main
