@@ -5,6 +5,10 @@ else
 fi
 source $DOT/bash_paths
 source $DOT/bash_functions
+if [ -f "$DOT/bash_local" ]
+then
+  source $DOT/bash_local
+fi
 source $DOT/bash_completion
 if [ -f "$DOT/bash_secret" ]
 then
@@ -90,11 +94,6 @@ then
   do
     source $i
   done
-fi
-
-if [ -f "$DOT/bash_local" ]
-then
-  source $DOT/bash_local
 fi
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
