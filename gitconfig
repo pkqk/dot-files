@@ -15,6 +15,7 @@
   d = diff
   g = grep -in --color=auto
   ff = pull --ff-only
+  fsp = !git stash && git ff && git stash pop
   hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
   graph = log --color --graph --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
   fixup = !GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash
