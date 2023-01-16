@@ -1,15 +1,11 @@
 if [ -z "$DOT_PATH_SET" ]; then
-  ### Added by the Heroku Toolbelt
-  if [ -d "/usr/local/heroku/bin" ]
-  then
-    export PATH="/usr/local/heroku/bin:$PATH"
-  fi
   if [ -d "/usr/local/go/bin" ]
   then
     export PATH="/usr/local/go/bin:$PATH"
   fi
 
-  export PATH=~/bin:/usr/local/bin:$PATH
+  export PATH=~/bin:$PATH
   export PATH="${PATH}:${HOME}/go/bin:${HOME}/go/bin/darwin_arm64:/opt/homebrew/bin:/opt/homebrew/opt/mysql-client@5.7/bin"
+  export PATH="${PATH}:/opt/homebrew/opt/node@16/bin"
   export DOT_PATH_SET=yes
 fi
