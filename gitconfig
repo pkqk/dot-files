@@ -4,6 +4,13 @@
 [user]
   name = Adam Sven Johnson
   email = adam@pkqk.net
+  signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMFvrOQLOfA5kOM9Jd6ff7hfiKdviE0w55K1QzOnnYmPXgZc4rN7bGeCRdAIB3+qXn4y9L+1tBEyBxQURjZdaOCUqmPCn8wuoq5euMwvltIViC/pu5XAuw5ZjgLrv23AIAaUGeF0HhlROET+l1ymc9MISZfkpsrhhOO1pMv57DnltfIbyDDuyxQGYQWcznSwqkYaUFa+WVthUKe6RxsXuyRyrZg6FGZg4ni4nGSExQ6PRgB9JtqOEZwKHorhaBO8LkfighBeBqDgiWGHrl2jVG4q5HBY4soVmEKoXmBFf6J9i8Gb4PDGHSjyEk4UDcay//mZ2Q5UqYizvQ788UOFMp
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+  gpgsign = true
 [push]
   default = upstream
 [alias]
