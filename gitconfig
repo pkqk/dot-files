@@ -26,6 +26,7 @@
   graph = log --color --graph --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
   fixup = !GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash
   cleanup = "!git branch -v | awk '{ if($3 == \"[gone]\") print $1}' | xargs -n 1 git branch -d"
+  vtags = tag --sort=-version:refname -l
 [color]
   branch = auto
   diff = auto
