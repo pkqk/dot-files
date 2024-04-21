@@ -68,11 +68,6 @@ export GIT_PS1_SHOWSTASHSTATE=1
 export GIT_PS1_SHOWUPSTREAM=auto
 export GIT_PS1_STATESEPARATOR=''
 
-if which rbenv > /dev/null
-then
-  eval "$(rbenv init -)"
-fi
-
 case "${TERM}" in
   xterm*)
     cyan=$(tput setaf 6)
