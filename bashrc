@@ -1,10 +1,4 @@
-if [ -L ~/.bashrc ]; then
-  export DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
-else
-  DOT="$HOME/.dot"
-fi
-
-for f in $(find ${DOT}/bash.d -name '*.sh' -o -name '*.bash')
+for f in $(find ${DOT}/bashrc.d -name '*.sh' -o -name '*.bash')
 do
   source "${f}"
 done

@@ -1,7 +1,3 @@
-if [ -n "${DOT_LOADED}" ]; then
-  return
-fi
-
 paths=(
   ~/bin
   ~/go/bin
