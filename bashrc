@@ -79,9 +79,9 @@ case "${TERM}" in
   ;;
 esac
 
-alias dc=docker-compose
-alias dr="docker-compose run --rm"
-alias dlog="docker-compose logs --tail=10 -f"
+alias dc="docker compose"
+alias dr="docker compose run --rm"
+alias dlog="docker compose logs --tail=10 -f"
 
 if [ -d /usr/local/etc/bash_completion.d ]
 then
