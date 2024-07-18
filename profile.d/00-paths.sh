@@ -7,6 +7,3 @@ paths=(
   /opt/homebrew/opt/node@20/bin
   /opt/homebrew/opt/libpq/bin
 )
-
-export PATH="$(printf "%s:" "${paths[@]}")${PATH}"
-unset paths
