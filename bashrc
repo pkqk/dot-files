@@ -4,15 +4,7 @@ do
 done
 
 source $DOT/bash_functions
-if [ -f "$DOT/bash_local" ]
-then
-  source $DOT/bash_local
-fi
 source $DOT/bash_completion
-if [ -f "$DOT/bash_secret" ]
-then
-  source $DOT/bash_secret
-fi
 
 export GREP_OPTIONS="--color=auto"
 
