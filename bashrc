@@ -1,9 +1,14 @@
 if [ -L ~/.bashrc ]; then
-  DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
+  export DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
 else
   DOT="$HOME/.dot"
 fi
-source $DOT/bash_paths
+
+for f in $(find ${DOT}/bash.d -name '*.sh' -o -name '*.bash')
+do
+  source "${f}"
+done
+
 source $DOT/bash_functions
 if [ -f "$DOT/bash_local" ]
 then
@@ -107,3 +112,5 @@ function eot_check() {
 PROMPT_COMMAND="${PROMPT_COMMAND};eot_check"
 
 export SSH_AUTH_SOCK="${HOME}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+export DOT_LOADED=yes
