@@ -7,5 +7,6 @@ if [ -z "$DOT_PATH_SET" ]; then
   export PATH=~/bin:$PATH
   export PATH="${PATH}:${HOME}/go/bin:${HOME}/go/bin/darwin_arm64:/opt/homebrew/bin:/opt/homebrew/opt/mysql-client@5.7/bin"
   export PATH="${PATH}:/opt/homebrew/opt/node@20/bin"
+  export PATH="${PATH}:/opt/homebrew/opt/libpq/bin"
   export DOT_PATH_SET=yes
 fi
