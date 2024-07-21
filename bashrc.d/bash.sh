@@ -9,10 +9,3 @@ export HISTSIZE=10000
 shopt -s histappend
 
 shopt -s extglob
-
-if ls --version 2&>/dev/null
-then
-  alias ls="ls -F --color=auto"
-else
-  alias ls="ls -GF"
-fi
