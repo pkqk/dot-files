@@ -1,3 +1,0 @@
-export BASH_COMPLETION=$DOT/bash_standard_completion
-export BASH_COMPLETION_DIR=$DOT/completion
-source $DOT/bash_standard_completion
