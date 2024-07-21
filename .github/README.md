@@ -5,7 +5,7 @@ These are my dotfiles
 ## installation
 
 1. Checkout the code repository somewhere convenient, it doesn't need to be anywhere specific.
-2. run `setup.sh`
+2. run `install.sh`
   * this will symlink config files
   * by force, it doesn't back up existing files
 3. Put extra config in a `bashrc.d` and add to `.gitignore` if private
