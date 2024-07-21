@@ -8,7 +8,7 @@ These are my dotfiles
 2. run `setup.sh`
   * this will symlink config files
   * by force, it doesn't back up existing files
-3. Put useful private config in a file called `bash_secret`
+3. Put extra config in a `bashrc.d` and add to `.gitignore` if private
 4. restart your shell
   * it will be how I like it.
 
