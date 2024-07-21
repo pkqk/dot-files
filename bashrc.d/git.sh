@@ -18,6 +18,8 @@ alias gaff="git pull --autostash --ff-only && git cleanup"
 alias gr="git rebase"
 alias grc="git rebase --continue"
 
+source "${DOT}/completion/git"
+
 __git_complete g __git_main
 __git_complete gci _git_commit
 __git_complete gb _git_branch
