@@ -5,7 +5,6 @@ pushd ~ > /dev/null
 files=(
   bashrc
   digrc
-  gemrc
   gitconfig
   gitignore
   inputrc
