@@ -18,8 +18,6 @@ alias gaff="git pull --autostash --ff-only && git cleanup"
 alias gr="git rebase"
 alias grc="git rebase --continue"
 
-source "${DOT}/completion/git"
-
 __git_complete g __git_main
 __git_complete gci _git_commit
 __git_complete gb _git_branch
@@ -36,7 +34,6 @@ __git_complete gff _git_pull
 __git_complete gr _git_rebase
 __git_complete grc _git_rebase
 
-source $DOT/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 export GIT_PS1_SHOWUPSTREAM=1
