@@ -1,27 +1,27 @@
 [submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
+	path = .vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/nerdtree-tabs"]
-	path = vim/bundle/nerdtree-tabs
+	path = .vim/bundle/nerdtree-tabs
 	url = https://github.com/jistr/vim-nerdtree-tabs.git
 [submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
+	path = .vim/bundle/command-t
 	url = git://github.com/wincent/Command-T.git
 [submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
+	path = .vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
+	path = .vim/bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/gitgutter"]
-	path = vim/bundle/gitgutter
+	path = .vim/bundle/gitgutter
 	url = git@github.com:airblade/vim-gitgutter.git
 [submodule "vim/bundle/airline"]
-	path = vim/bundle/airline
+	path = .vim/bundle/airline
 	url = git@github.com:bling/vim-airline.git
 [submodule "vim/bundle/ag"]
-	path = vim/bundle/ag
+	path = .vim/bundle/ag
 	url = git@github.com:rking/ag.vim.git
 [submodule "vim/bundle/dockerfile"]
-	path = vim/bundle/dockerfile
+	path = .vim/bundle/dockerfile
 	url = https://github.com/ekalinin/Dockerfile.vim.git
