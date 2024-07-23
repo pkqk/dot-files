@@ -1,18 +1,22 @@
-# dotfiles
+# dot files
 
-These are my dotfiles
+These are my dot files
 
 ## installation
 
-1. Checkout the code repository somewhere convenient, it doesn't need to be anywhere specific.
-2. run `install.sh`
-  * this will symlink config files
-  * by force, it doesn't back up existing files
-3. Put extra config in a `bashrc.d` and add to `.gitignore` if private
-4. restart your shell
-  * it will be how I like it.
+1. `git clone --bare https://github.com/pkqk/dot-files $HOME/.dot.git`
+2. `.dot/install.sh`
+    * This will checkout the dot files using `$HOME` as the worktree
+    * it may conflict with existing files
 
-## useful bashisms
+3. Put extra config in a file in  `~/.profile.d` or `~/.bashrc.d`
+    * `~/.profile.d` is executed on login, useful for adding to `$PATH`
+    * `~/.bashrc.d` is executed on every shell invocation, useful for setting up functions and more complex bash features
+4. Restart your shell, it will be how I like it
+5. Use `dotcfg` as the git command for tracking dot files
 
-* `cddot` will take you to the dotfiles directory
-* `$DOT` will be set to the dotfiles directory
+## based on
+
+The git worktree trick described in the [atlassian tutorials][worktree]
+
+[worktree]: https://www.atlassian.com/git/tutorials/dotfiles
