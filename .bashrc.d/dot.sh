@@ -1,1 +1,1 @@
-alias cddot="cd ${DOT}"
+alias dotcfg='git --git-dir=$HOME/.dot.git/ --work-tree=$HOME'
