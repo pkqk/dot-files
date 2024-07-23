@@ -14,11 +14,9 @@
 [push]
   default = upstream
 [alias]
-  st = status
-  ci = commit
-  cia = commit -a
+  st = status -s
+  ci = commit -v
   co = checkout
-  cob = checkout -b
   d = diff
   g = grep -in --color=auto
   ff = pull --ff-only --autostash
