@@ -1,22 +1,6 @@
-git submodule update --init
-path=$(pwd)
-pushd ~ > /dev/null
-
-files=(
-  bashrc
-  digrc
-  gitconfig
-  gitignore
-  inputrc
-  profile
-  screenrc
-  vim
-  vimrc
-)
-
-for i in "${files[@]}"
-do
-  echo "linking ~/${path##$HOME/}/${i} to ~/.$i"
-  ln -shf "${path##$HOME/}/${i}" ~/.$i
-done
-popd > /dev/null
+function dotcfg {
+   git --git-dir=$HOME/.dot.git/ --work-tree=$HOME $@
+}
+dotcfg config status.showUntrackedFiles no
+dotcfg checkout
+dotcfg submodule update --init
