@@ -1,8 +1,7 @@
-if [ -e ~/.bashrc -a -L ~/.bashrc ]
+#!/bin/bash
+if [ -e ~/.bashrc ]
 then
-  export DOT="$HOME/$(dirname $(readlink ~/.bashrc))"
-
-  for f in $(find ${DOT}/profile.d -name '*.sh' -o -name '*.bash' | sort)
+  for f in $(find ~/.profile.d -name '*.sh' -o -name '*.bash' | sort)
   do
     source "${f}"
   done
