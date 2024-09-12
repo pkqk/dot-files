@@ -17,7 +17,6 @@
   st = status -s
   ci = commit -v
   co = checkout
-  d = diff
   g = grep -in --color=auto
   ff = pull --ff-only --autostash
   hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
