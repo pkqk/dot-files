@@ -3246,9 +3246,9 @@ _comp_load()
         done
     done
 
-    # Look up simple "xspec" completions
-    [[ -v _comp_xspecs[$cmdname] || -v _xspecs[$cmdname] ]] &&
-        complete -F _comp_complete_filedir_xspec "$cmdname" "$backslash$cmdname" && return 0
+    # # Look up simple "xspec" completions
+    # [[ -v _comp_xspecs[$cmdname] || -v _xspecs[$cmdname] ]] &&
+    #     complete -F _comp_complete_filedir_xspec "$cmdname" "$backslash$cmdname" && return 0
 
     if [[ $flag_fallback_default ]]; then
         complete -F _comp_complete_minimal -- "$origcmd" && return 0
