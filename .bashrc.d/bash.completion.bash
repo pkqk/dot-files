@@ -25,7 +25,7 @@
 
 BASH_COMPLETION_VERSINFO=(
     2  # x-release-please-major
-    14 # x-release-please-minor
+    16 # x-release-please-minor
     0  # x-release-please-patch
 )
 
@@ -655,29 +655,111 @@ _comp_compgen()
             printf 'bash_completion: %s: unrecognized generator `%s'\'' (function %s not found)\n' "$FUNCNAME" "$1" "${_generator[0]}" >&2
             return 2
         fi
+        shift
 
-        ((${#_upvars[@]})) && _comp_unlocal "${_upvars[@]}"
+        _comp_compgen__call_generator "$@"
+    else
+        # usage: _comp_compgen [options] -- [compgen_options]
+        if [[ $_icmd || $_xcmd ]]; then
+            printf 'bash_completion: %s: generator name is unspecified for `%s'\''\n' "$FUNCNAME" "${_icmd:+-i $_icmd}${_xcmd:+x $_xcmd}" >&2
+            return 2
+        fi
 
+        # Note: $* in the below checks would be affected by uncontrolled IFS in
+        # bash >= 5.0, so we need to set IFS to the normal value.  The behavior
+        # in bash < 5.0, where unquoted $* in conditional command did not honor
+        # IFS, was a bug.
+        # Note: Also, ${_cur:+-- "$_cur"} and ${_append:+-a} would be affected
+        # by uncontrolled IFS.
+        local IFS=$' \t\n'
+        # Note: extglob *\$?(\{)[0-9]* can be extremely slow when the string
+        # "${*:2:_nopt}" becomes longer, so we test \$[0-9] and \$\{[0-9]
+        # separately.
+        if [[ $* == *\$[0-9]* || $* == *\$\{[0-9]* ]]; then
+            printf 'bash_completion: %s: positional parameter $1, $2, ... do not work inside this function\n' "$FUNCNAME" >&2
+            return 2
+        fi
+
+        _comp_compgen__call_builtin "$@"
+    fi
+}
+
+# Helper function for _comp_compgen.  This function calls a generator.
+# @param $1... generator_args
+# @var[in] _dir
+# @var[in] _cur
+# @arr[in] _generator
+# @arr[in] _upvars
+# @var[in] _append
+# @var[in] _var
+_comp_compgen__call_generator()
+{
+    ((${#_upvars[@]})) && _comp_unlocal "${_upvars[@]}"
+
+    if [[ $_dir ]]; then
+        local _original_pwd=$PWD
+        local PWD=${PWD-} OLDPWD=${OLDPWD-}
+        # Note: We also redirect stdout because `cd` may output the target
+        # directory to stdout when CDPATH is set.
+        command cd -- "$_dir" &>/dev/null ||
+            {
+                _comp_compgen__error_fallback
+                return
+            }
+    fi
+
+    local _comp_compgen__append=$_append
+    local _comp_compgen__var=$_var
+    local _comp_compgen__cur=$_cur cur=$_cur
+    # Note: we use $1 as a part of a function name, and we use $2... as
+    # arguments to the function if any.
+    # shellcheck disable=SC2145
+    "${_generator[@]}" "$@"
+    local _status=$?
+
+    # Go back to the original directory.
+    # Note: Failure of this line results in the change of the current
+    # directory visible to the user.  We intentionally do not redirect
+    # stderr so that the error message appear in the terminal.
+    # shellcheck disable=SC2164
+    [[ $_dir ]] && command cd -- "$_original_pwd"
+
+    return "$_status"
+}
+
+# Helper function for _comp_compgen.  This function calls the builtin compgen.
+# @param $1... compgen_args
+# @var[in] _dir
+# @var[in] _ifs
+# @var[in] _cur
+# @arr[in] _upvars
+# @var[in] _append
+# @var[in] _var
+if ((BASH_VERSINFO[0] > 5 || BASH_VERSINFO[0] == 5 && BASH_VERSINFO[1] >= 3)); then
+    # bash >= 5.3 has `compgen -V array_name`
+    _comp_compgen__call_builtin()
+    {
         if [[ $_dir ]]; then
             local _original_pwd=$PWD
             local PWD=${PWD-} OLDPWD=${OLDPWD-}
             # Note: We also redirect stdout because `cd` may output the target
             # directory to stdout when CDPATH is set.
-            command cd -- "$_dir" &>/dev/null ||
-                {
-                    _comp_compgen__error_fallback
-                    return
-                }
+            command cd -- "$_dir" &>/dev/null || {
+                _comp_compgen__error_fallback
+                return
+            }
         fi
 
-        local _comp_compgen__append=$_append
-        local _comp_compgen__var=$_var
-        local _comp_compgen__cur=$_cur cur=$_cur
-        # Note: we use $1 as a part of a function name, and we use $2... as
-        # arguments to the function if any.
-        # shellcheck disable=SC2145
-        "${_generator[@]}" "${@:2}"
-        local _status=$?
+        local -a _result=()
+
+        # Note: We specify -X '' to exclude empty completions to make the
+        # behavior consistent with the implementation for Bash < 5.3 where
+        # `_comp_split -l` removes empty lines.  If the caller specifies -X
+        # pat, the effect of -X '' is overwritten by the specified one.
+        IFS=$_ifs compgen -V _result -X '' "$@" ${_cur:+-- "$_cur"} || {
+            _comp_compgen__error_fallback
+            return
+        }
 
         # Go back to the original directory.
         # Note: Failure of this line results in the change of the current
@@ -686,46 +768,35 @@ _comp_compgen()
         # shellcheck disable=SC2164
         [[ $_dir ]] && command cd -- "$_original_pwd"
 
-        return "$_status"
-    fi
-
-    # usage: _comp_compgen [options] -- [compgen_options]
-    if [[ $_icmd || $_xcmd ]]; then
-        printf 'bash_completion: %s: generator name is unspecified for `%s'\''\n' "$FUNCNAME" "${_icmd:+-i $_icmd}${_xcmd:+x $_xcmd}" >&2
-        return 2
-    fi
-
-    # Note: $* in the below checks would be affected by uncontrolled IFS in
-    # bash >= 5.0, so we need to set IFS to the normal value.  The behavior in
-    # bash < 5.0, where unquoted $* in conditional command did not honor IFS,
-    # was a bug.
-    # Note: Also, ${_cur:+-- "$_cur"} and ${_append:+-a} would be affected by
-    # uncontrolled IFS.
-    local IFS=$' \t\n'
-    # Note: extglob *\$?(\{)[0-9]* can be extremely slow when the string
-    # "${*:2:_nopt}" becomes longer, so we test \$[0-9] and \$\{[0-9]
-    # separately.
-    if [[ $* == *\$[0-9]* || $* == *\$\{[0-9]* ]]; then
-        printf 'bash_completion: %s: positional parameter $1, $2, ... do not work inside this function\n' "$FUNCNAME" >&2
-        return 2
-    fi
-
-    local _result
-    _result=$(
-        if [[ $_dir ]]; then
-            # Note: We also redirect stdout because `cd` may output the target
-            # directory to stdout when CDPATH is set.
-            command cd -- "$_dir" &>/dev/null || return
+        ((${#_upvars[@]})) && _comp_unlocal "${_upvars[@]}"
+        ((${#_result[@]})) || return
+        if [[ $_append ]]; then
+            eval -- "$_var+=(\"\${_result[@]}\")"
+        else
+            eval -- "$_var=(\"\${_result[@]}\")"
         fi
-        IFS=$_ifs compgen "$@" ${_cur:+-- "$_cur"}
-    ) || {
-        _comp_compgen__error_fallback
         return
     }
+else
+    _comp_compgen__call_builtin()
+    {
+        local _result
+        _result=$(
+            if [[ $_dir ]]; then
+                # Note: We also redirect stdout because `cd` may output the target
+                # directory to stdout when CDPATH is set.
+                command cd -- "$_dir" &>/dev/null || return
+            fi
+            IFS=$_ifs compgen "$@" ${_cur:+-- "$_cur"}
+        ) || {
+            _comp_compgen__error_fallback
+            return
+        }
 
-    ((${#_upvars[@]})) && _comp_unlocal "${_upvars[@]}"
-    _comp_split -l ${_append:+-a} "$_var" "$_result"
-}
+        ((${#_upvars[@]})) && _comp_unlocal "${_upvars[@]}"
+        _comp_split -l ${_append:+-a} "$_var" "$_result"
+    }
+fi
 
 # usage: _comp_compgen_set [words...]
 # Reset COMPREPLY with the specified WORDS.  If no arguments are specified, the
@@ -1140,6 +1211,15 @@ _comp_compgen_filedir()
             $_arg && ${#toks[@]} -lt 1 ]] &&
             _comp_compgen -av toks -c "$_quoted" -- \
                 -f ${_plusdirs+"${_plusdirs[@]}"}
+    fi
+
+    if ((${#toks[@]} != 0)); then
+        # Remove . and .. (as well as */. and */..) from suggestions, unless
+        # .. or */.. was typed explicitly by the user (for users who use
+        # tab-completion to append a slash after '..')
+        if [[ $cur != ?(*/).. ]]; then
+            _comp_compgen -Rv toks -- -X '?(*/)@(.|..)' -W '"${toks[@]}"'
+        fi
     fi
 
     if ((${#toks[@]} != 0)); then
@@ -1628,7 +1708,7 @@ _comp_compgen_mac_addresses()
     # - ip link: link/ether
     _comp_compgen -v addresses split -- "$(
         {
-            LC_ALL=C ifconfig -a || ip -c=never link show || ip link show
+            ip -c=never link show || ip link show || LC_ALL=C ifconfig -a
         } 2>/dev/null | command sed -ne \
             "s/.*[[:space:]]HWaddr[[:space:]]\{1,\}\($_re\)[[:space:]].*/\1/p" -ne \
             "s/.*[[:space:]]HWaddr[[:space:]]\{1,\}\($_re\)[[:space:]]*$/\1/p" -ne \
@@ -1699,7 +1779,7 @@ _comp_compgen_ip_addresses()
     local PATH=$PATH:/sbin
     local addrs
     _comp_compgen -v addrs split -- "$({
-        LC_ALL=C ifconfig -a || ip -c=never addr show || ip addr show
+        ip -c=never addr show || ip addr show || LC_ALL=C ifconfig -a
     } 2>/dev/null |
         command sed -e 's/[[:space:]]addr:/ /' -ne \
             "s|.*inet${_n}[[:space:]]\{1,\}\([^[:space:]/]*\).*|\1|p")" ||
@@ -1733,9 +1813,12 @@ _comp_compgen_available_interfaces()
         if [[ ${1-} == -w ]]; then
             iwconfig
         elif [[ ${1-} == -a ]]; then
-            ifconfig || ip -c=never link show up || ip link show up
+            # Note: we prefer ip (iproute2) to ifconfig (inetutils) since long
+            # interface names will be truncated by ifconfig [1].
+            # [1]: https://github.com/scop/bash-completion/issues/1089
+            ip -c=never link show up || ip link show up || ifconfig
         else
-            ifconfig -a || ip -c=never link show || ip link show
+            ip -c=never link show || ip link show || ifconfig -a
         fi
     } 2>/dev/null | _comp_awk \
         '/^[^ \t]/ { if ($1 ~ /^[0-9]+:/) { print $2 } else { print $1 } }')" &&
@@ -2181,15 +2264,22 @@ _comp_compgen_fstypes()
 _comp_abspath()
 {
     REPLY=$1
-    case $REPLY in
-        /*) ;;
-        ../*) REPLY=$PWD/${REPLY:3} ;;
-        *) REPLY=$PWD/$REPLY ;;
-    esac
-    while [[ $REPLY == */./* ]]; do
-        REPLY=${REPLY//\/.\//\/}
-    done
+    [[ $REPLY == /* ]] || REPLY=$PWD/$REPLY
     REPLY=${REPLY//+(\/)/\/}
+    while true; do
+        # Process "." and "..".  To avoid reducing "/../../ => /", we convert
+        # "/*/../" one by one. "/.."  at the beginning is ignored. Then, /*/../
+        # in the middle is processed.  Finally, /*/.. at the end is removed.
+        case $REPLY in
+            */./*) REPLY=${REPLY//\/.\//\/} ;;
+            */.) REPLY=${REPLY%/.} ;;
+            /..?(/*)) REPLY=${REPLY#/..} ;;
+            */+([^/])/../*) REPLY=${REPLY/\/+([^\/])\/..\//\/} ;;
+            */+([^/])/..) REPLY=${REPLY%/+([^/])/..} ;;
+            *) break ;;
+        esac
+    done
+    [[ $REPLY ]] || REPLY=/
 }
 
 # Get real command.
@@ -2697,7 +2787,7 @@ _comp_compgen_known_hosts__impl()
     _comp_compgen -v known_hosts -c "$prefix$cur" ltrim_colon "${known_hosts[@]}"
 }
 complete -F _comp_complete_known_hosts traceroute traceroute6 \
-    fping fping6 telnet rsh rlogin ftp dig drill mtr ssh-installkeys showmount
+    fping fping6 telnet rsh rlogin ftp dig drill ssh-installkeys showmount
 
 # Convert the word index in `words` to the index in `COMP_WORDS`.
 # @param $1           Index in the array WORDS.
@@ -3042,6 +3132,13 @@ _comp_compgen_filedir_xspec()
 
     ((${#toks[@]})) || return 1
 
+    # Remove . and .. (as well as */. and */..) from suggestions, unless .. or
+    # */.. was typed explicitly by the user (for users who use tab-completion
+    # to append a slash after '..')
+    if [[ $cur != ?(*/).. ]]; then
+        _comp_compgen -Rv toks -- -X '?(*/)@(.|..)' -W '"${toks[@]}"' || return 1
+    fi
+
     compopt -o filenames
     _comp_compgen -RU toks -- -W '"${toks[@]}"'
 }
@@ -3056,7 +3153,7 @@ _comp__init_install_xspec()
 }
 # bzcmp, bzdiff, bz*grep, bzless, bzmore intentionally not here, see Debian: #455510
 _comp__init_install_xspec '!*.?(t)bz?(2)' bunzip2 bzcat pbunzip2 pbzcat lbunzip2 lbzcat
-_comp__init_install_xspec '!*.@(zip|[aegjkswx]ar|exe|pk3|wsz|zargo|xpi|s[tx][cdiw]|sx[gm]|o[dt][tspgfc]|od[bm]|oxt|?(o)xps|epub|cbz|apk|aab|ipa|do[ct][xm]|p[op]t[mx]|xl[st][xm]|pyz|whl|[Ff][Cc][Ss]td)' unzip zipinfo
+_comp__init_install_xspec '!*.@(zip|[aegjkswx]ar|exe|pk3|wsz|zargo|xpi|s[tx][cdiw]|sx[gm]|o[dt][tspgfc]|od[bm]|oxt|?(o)xps|epub|cbz|apk|aab|ipa|do[ct][xm]|p[op]t[mx]|xl[st][xm]|pyz|vsix|whl|[Ff][Cc][Ss]td)' unzip zipinfo
 _comp__init_install_xspec '*.Z' compress znew
 # zcmp, zdiff, z*grep, zless, zmore intentionally not here, see Debian: #455510
 _comp__init_install_xspec '!*.@(Z|[gGd]z|t[ag]z)' gunzip zcat
@@ -3068,7 +3165,7 @@ _comp__init_install_xspec '!*.@(?(t)xz|tlz|lzma)' unxz xzcat
 _comp__init_install_xspec '!*.lrz' lrunzip
 _comp__init_install_xspec '!*.@(gif|jp?(e)g|miff|tif?(f)|pn[gm]|p[bgp]m|bmp|xpm|ico|xwd|tga|pcx)' ee
 _comp__init_install_xspec '!*.@(gif|jp?(e)g|tif?(f)|png|p[bgp]m|bmp|x[bp]m|rle|rgb|pcx|fits|pm|svg)' qiv
-_comp__init_install_xspec '!*.@(gif|jp?(e)g?(2)|j2[ck]|jp[2f]|tif?(f)|png|p[bgp]m|bmp|x[bp]m|rle|rgb|pcx|fits|pm|?(e)ps)' xv
+_comp__init_install_xspec '!*.@(gif|jp?(e)g?(2)|j2[ck]|jp[2f]|tif?(f)|png|p[bgpn]m|webp|bmp|x[bp]m|rle|rgb|pcx|fits|pm|?(e)ps)' xv
 _comp__init_install_xspec '!*.@(@(?(e)ps|?(E)PS|pdf|PDF)?(.gz|.GZ|.bz2|.BZ2|.Z))' gv ggv kghostview
 _comp__init_install_xspec '!*.@(dvi|DVI)?(.@(gz|Z|bz2))' xdvi kdvi
 _comp__init_install_xspec '!*.dvi' dvips dviselect dvitype dvipdf advi dvipdfm dvipdfmx
@@ -3125,6 +3222,18 @@ _comp_complete_minimal()
 # https://lists.gnu.org/archive/html/bug-bash/2012-01/msg00045.html
 complete -F _comp_complete_minimal ''
 
+# Initialize the variable "_comp__base_directory"
+# @var[out] _comp__base_directory
+_comp__init_base_directory()
+{
+    local REPLY
+    _comp_abspath "${BASH_SOURCE[0]-./bash_completion}"
+    _comp__base_directory=${REPLY%/*}
+    [[ $_comp__base_directory ]] || _comp__base_directory=/
+    unset -f "$FUNCNAME"
+}
+_comp__init_base_directory
+
 # @since 2.12
 _comp_load()
 {
@@ -3177,11 +3286,7 @@ _comp_load()
     # we want to prefer in-tree completions over ones possibly coming with a
     # system installed bash-completion. (Due to usual install layouts, this
     # often hits the correct completions in system installations, too.)
-    if [[ $BASH_SOURCE == */* ]]; then
-        dirs+=("${BASH_SOURCE%/*}/completions")
-    else
-        dirs+=(./completions)
-    fi
+    dirs+=("$_comp__base_directory/completions")
 
     # 3) From bin directories extracted from the specified path to the command,
     # the real path to the command, and $PATH
@@ -3246,9 +3351,9 @@ _comp_load()
         done
     done
 
-    # # Look up simple "xspec" completions
-    # [[ -v _comp_xspecs[$cmdname] || -v _xspecs[$cmdname] ]] &&
-    #     complete -F _comp_complete_filedir_xspec "$cmdname" "$backslash$cmdname" && return 0
+    # Look up simple "xspec" completions
+    [[ -v _comp_xspecs[$cmdname] || -v _xspecs[$cmdname] ]] &&
+        complete -F _comp_complete_filedir_xspec "$cmdname" "$backslash$cmdname" && return 0
 
     if [[ $flag_fallback_default ]]; then
         complete -F _comp_complete_minimal -- "$origcmd" && return 0
@@ -3323,12 +3428,10 @@ _comp__init_collect_startup_configs()
         # run-in-place-from-git-clone setups.  Notably we do it after the
         # system location here, in order to prefer in-tree variables and
         # functions.
-        if [[ ${base_path%/*} == */share/bash-completion ]]; then
-            compat_dir=${base_path%/share/bash-completion/*}/etc/bash_completion.d
-        elif [[ $base_path == */* ]]; then
-            compat_dir="${base_path%/*}/bash_completion.d"
+        if [[ $_comp__base_directory == */share/bash-completion ]]; then
+            compat_dir=${_comp__base_directory%/share/bash-completion}/etc/bash_completion.d
         else
-            compat_dir=./bash_completion.d
+            compat_dir=$_comp__base_directory/bash_completion.d
         fi
         [[ ${compat_dirs[0]} == "$compat_dir" ]] ||
             compat_dirs+=("$compat_dir")
