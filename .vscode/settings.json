@@ -148,5 +148,6 @@
     "security.workspace.trust.untrustedFiles": "open",
     "editor.tabSize": 2,
     "editor.guides.bracketPairs": "active",
-    "editor.bracketPairColorization.enabled": true
+    "editor.bracketPairColorization.enabled": true,
+    "makefile.configureOnOpen": false
 }
