@@ -20,4 +20,4 @@ function eot_check() {
   fi
 }
 
-PROMPT_COMMAND="${PROMPT_COMMAND};eot_check"
+PROMPT_COMMAND="${PROMPT_COMMAND}${PROMPT_COMMAND:+;}eot_check"
