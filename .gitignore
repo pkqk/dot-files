@@ -7,6 +7,7 @@ Icon
 *.pyc
 *.swp
 *.swo
+*.tfplan
 .chef
 .vagrant
 .bundle
