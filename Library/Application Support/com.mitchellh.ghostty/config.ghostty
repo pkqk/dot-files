@@ -1,0 +1,5 @@
+config-file = ?auto/theme.ghostty
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-color = #d33682
