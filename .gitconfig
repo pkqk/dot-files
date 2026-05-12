@@ -13,6 +13,7 @@
   gpgsign = true
 [push]
   default = upstream
+  autoSetupRemote = true
 [alias]
   st = status -s
   ci = commit -v
